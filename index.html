@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1d1b16">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Horus">
+<meta name="description" content="Horus · Vigilancia fitosanitaria para limón, naranja, guanábana, mango, cacao, café y otros cultivos de San Juan Bautista Tuxtepec, Oaxaca.">
+<title>Horus · Vigilancia fitosanitaria · Tuxtepec</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 84'%3E%3Cpath d='M8 17C34 4 84 2 112 12L110 19C84 10 36 12 10 24Z' fill='%231d1b16'/%3E%3Cpath d='M10 41C28 23 78 21 104 37C80 49 36 53 10 41Z' fill='none' stroke='%231d1b16' stroke-width='6'/%3E%3Ccircle cx='56' cy='37.5' r='11' fill='%231d1b16'/%3E%3Cpath d='M38 48L36 76L43 76L45 47Z' fill='%231d1b16'/%3E%3Cpath d='M62 49C64 62 72 70 82 69' fill='none' stroke='%231d1b16' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M82 69C86 58 98 54 110 57C104 68 92 74 82 69Z' fill='%232f5d3a'/%3E%3C/svg%3E">
+<style>
+/* =====================================================================
+   HORUS · VIGILANCIA FITOSANITARIA · TUXTEPEC
+   ---------------------------------------------------------------------
+   CÓDIGO DE COLOR (cada color tiene un significado agronómico):
+   · Papel y tinta  → la libreta de campo del técnico.
+   · Verde hoja     → tejido sano / prevención.
+   · Amarillo       → clorosis: daño LEVE (primer síntoma visible).
+   · Naranja mango  → daño MODERADO / lo que viene (predictivo).
+   · Café rojizo    → necrosis: daño GRAVE.
+   · Terracota      → acción correctiva inmediata.
+   · Azul río       → conclusión del análisis (río Papaloapan).
+   · Café cacao     → acentos de identidad regional.
+   ===================================================================== */
+:root{
+  --papel:#f3eee2; --papel-2:#e9e1cd; --lamina:#fbf8f0; --blanco:#fffdf8;
+  --tinta:#1d1b16; --tinta-2:#4a463c; --tinta-3:#7b7567;
+  --linea:rgba(29,27,22,.14); --linea-2:rgba(29,27,22,.28);
+  --hoja:#2f5d3a; --hoja-2:#234630; --hoja-cl:#e3e9d6;
+  --clorosis:#d1a92a; --mango:#d5792a; --necrosis:#8a2e1c;
+  --terracota:#a8432a; --rio:#1f5c66; --cacao:#5a3824;
+  --a-bg:#e7ecdb; --b-bg:#f4e3da; --c-bg:#f7e9d4; --d-bg:#dfe9e8;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --nav-h:64px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:var(--sans);background:var(--papel);color:var(--tinta);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(var(--papel),var(--papel));}
+button,input,select{font:inherit;color:inherit}
+img{max-width:100%}
+a{color:var(--hoja)}
+.ico{width:20px;height:20px;flex:0 0 auto;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}
+.ico.sm{width:16px;height:16px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+.oculto{display:none!important}
+.etq{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-3)}
+
+/* =================== PORTADA =================== */
+#portada{position:fixed;inset:0;z-index:300;overflow:auto;background:var(--papel);
+  background-image:repeating-linear-gradient(0deg,transparent 0 31px,rgba(29,27,22,.045) 31px 32px);
+  transition:opacity .5s ease,visibility .5s ease}
+#portada.salir{opacity:0;visibility:hidden}
+.pt-marco{min-height:100%;display:flex;flex-direction:column;max-width:1240px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 28px 0}
+.pt-cab{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--linea-2);padding-bottom:12px;color:var(--tinta-2)}
+.pt-cuerpo{flex:1;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:44px 0}
+.pt-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--cacao);margin:0 0 18px}
+.pt-titulo{font-family:var(--serif);font-weight:400;font-size:clamp(72px,12vw,148px);line-height:.9;margin:0;letter-spacing:-.02em}
+.pt-lema{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,30px);color:var(--hoja);margin:14px 0 0}
+.pt-desc{max-width:560px;color:var(--tinta-2);font-size:17px;margin:22px 0 0}
+.pt-acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.pt-datos{display:flex;gap:0;margin:38px 0 0;border-top:1px solid var(--linea-2)}
+.pt-datos div{padding:14px 26px 0 0;margin-right:26px;border-right:1px solid var(--linea)}
+.pt-datos div:last-child{border-right:0}
+.pt-datos dt{font-family:var(--serif);font-size:36px;line-height:1}
+.pt-datos dd{margin:4px 0 0;font-size:13px;color:var(--tinta-3)}
+.pt-sello{display:flex;justify-content:center}
+.pt-sello svg{width:100%;max-width:420px;height:auto}
+.pt-cultivos{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--linea-2);margin:0 -28px;padding:0 28px calc(10px + env(safe-area-inset-bottom));background:var(--papel-2)}
+.pt-cul{padding:16px 14px;border-right:1px solid var(--linea)}
+.pt-cul:last-child{border-right:0}
+.pt-cul b{display:block;font-family:var(--serif);font-weight:400;font-size:18px;line-height:1.1}
+.pt-cul i{font-family:var(--serif);font-size:13px;color:var(--tinta-3)}
+@media(max-width:900px){
+  .pt-cuerpo{grid-template-columns:1fr;gap:10px;padding:24px 0 30px}
+  .pt-sello{order:-1}.pt-sello svg{max-width:250px}
+  .pt-cultivos{grid-template-columns:repeat(3,1fr)}
+  .pt-cul{border-bottom:1px solid var(--linea)}
+  .pt-datos div{padding-right:16px;margin-right:16px}
+}
+@media(max-width:520px){.pt-marco{padding-left:18px;padding-right:18px}.pt-cultivos{grid-template-columns:1fr 1fr;margin:0 -18px;padding:0 18px 10px}.pt-cul b{font-size:16px}.pt-cab .mono:last-child{display:none}}
+
+/* =================== BOTONES =================== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid transparent;border-radius:3px;padding:12px 20px;font-size:15.5px;font-weight:600;cursor:pointer;min-height:52px;transition:background .15s,border-color .15s,color .15s,transform .1s;text-decoration:none;letter-spacing:.01em}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-pri{background:var(--hoja);color:var(--blanco)}
+.btn-pri:hover:not(:disabled){background:var(--hoja-2)}
+.btn-tinta{background:var(--tinta);color:var(--papel)}
+.btn-tinta:hover:not(:disabled){background:#000}
+.btn-sec{background:transparent;color:var(--tinta);border-color:var(--linea-2)}
+.btn-sec:hover:not(:disabled){border-color:var(--tinta);background:var(--blanco)}
+.btn-alerta{background:transparent;color:var(--terracota);border-color:rgba(168,67,42,.4)}
+.fila-btn{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fila-btn.tres{grid-template-columns:repeat(3,1fr)}
+@media(max-width:560px){.fila-btn.tres{grid-template-columns:1fr 1fr}.fila-btn.tres .btn:last-child{grid-column:span 2}}
+
+/* =================== ENCABEZADO DE LA APP =================== */
+.cab{position:sticky;top:0;z-index:60;background:var(--papel);border-bottom:1px solid var(--linea-2);padding-top:env(safe-area-inset-top)}
+.cab-in{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:22px;padding:0 24px;height:68px}
+.marca{display:flex;align-items:center;gap:12px;background:none;border:0;cursor:pointer;padding:0;text-align:left}
+.marca svg{width:52px;height:36px;color:var(--tinta)}
+.marca b{display:block;font-family:var(--serif);font-weight:400;font-size:26px;line-height:1}
+.marca small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-3);margin-top:3px}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav button{border:0;background:transparent;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 14px;font-weight:600;font-size:15px;color:var(--tinta-2);border-bottom:2px solid transparent;border-radius:0;height:68px}
+.nav button:hover{color:var(--tinta)}
+.nav button.activo{color:var(--tinta);border-bottom-color:var(--hoja)}
+.cab-der{display:flex;align-items:center;gap:10px}
+.estado{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--tinta-2);white-space:nowrap}
+.estado i{width:8px;height:8px;border-radius:50%;background:var(--tinta-3);display:inline-block}
+.estado.on i{background:var(--hoja)}
+.btn-cfg{width:44px;height:44px;border:1px solid var(--linea-2);border-radius:3px;background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:var(--tinta)}
+.btn-cfg:hover{background:var(--blanco)}
+main{max-width:1240px;margin:0 auto;padding:30px 24px 60px}
+@media(max-width:899px){
+  .cab-in{height:60px;padding:0 16px;gap:12px}
+  .marca svg{width:44px;height:30px}.marca b{font-size:22px}
+  .cab-der{margin-left:auto}
+  .nav{position:fixed;left:0;right:0;bottom:0;margin:0;gap:0;z-index:70;background:var(--tinta);height:calc(var(--nav-h) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom)}
+  .nav button{flex:1;flex-direction:column;justify-content:center;gap:4px;height:var(--nav-h);font-size:12px;color:rgba(243,238,226,.6);border-bottom:0;border-top:3px solid transparent}
+  .nav button.activo{color:var(--papel);border-top-color:var(--clorosis)}
+  main{padding:20px 14px calc(var(--nav-h) + env(safe-area-inset-bottom) + 30px)}
+}
+@media(max-width:420px){.estado span{display:none}.marca small{display:none}}
+
+.panel{display:none}
+.panel.activo{display:block;animation:aparecer .3s ease}
+@keyframes aparecer{from{opacity:0}to{opacity:1}}
+
+/* =================== TÍTULOS DE PÁGINA =================== */
+.pag{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;border-bottom:1px solid var(--linea-2);padding-bottom:18px;margin-bottom:26px}
+.pag h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.5vw,46px);line-height:1.05;margin:6px 0 0;letter-spacing:-.01em}
+.pag p{margin:8px 0 0;color:var(--tinta-2);max-width:640px}
+.pag .fecha{text-align:right;color:var(--tinta-2)}
+@media(max-width:560px){.pag .fecha{text-align:left}}
+
+/* =================== SECCIONES DE LA HOJA DE CAMPO =================== */
+.hoja-campo{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:1040px){.hoja-campo{grid-template-columns:1fr}}
+.sec{background:var(--lamina);border:1px solid var(--linea);border-radius:4px;padding:22px;margin-bottom:22px;position:relative}
+.sec-cab{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;margin-bottom:18px}
+.sec-num{font-family:var(--serif);font-size:34px;line-height:.9;color:var(--cacao);text-align:center;border-right:1px solid var(--linea-2);padding-right:10px}
+.sec-cab h2{margin:0;font-family:var(--serif);font-weight:400;font-size:23px;line-height:1.15}
+.sec-cab p{margin:3px 0 0;font-size:14px;color:var(--tinta-2)}
+.nota{font-size:13.5px;color:var(--tinta-2);margin:12px 0 0}
+
+/* Cultivos */
+.cultivos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:560px){.cultivos{grid-template-columns:repeat(2,1fr)}}
+.cultivo-btn{position:relative;border:1px solid var(--linea-2);background:var(--blanco);border-radius:3px;padding:14px 14px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:3px;min-height:84px;text-align:left;transition:border-color .15s,background .15s}
+.cultivo-btn b{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.1}
+.cultivo-btn i{font-family:var(--serif);font-size:12.5px;color:var(--tinta-3);line-height:1.2}
+.cultivo-btn:hover{border-color:var(--tinta)}
+.cultivo-btn.sel{border-color:var(--hoja);background:var(--hoja-cl);box-shadow:inset 0 0 0 1px var(--hoja)}
+.cultivo-btn.sel::after{content:"";position:absolute;top:8px;right:8px;width:16px;height:16px;border-radius:50%;background:var(--hoja) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fffdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+@media(max-width:400px){.cultivo-btn{min-height:74px;padding:12px 10px}.cultivo-btn b{font-size:15.5px}}
+label.lbl{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-3);margin:16px 0 6px}
+input[type=text],input[type=search],input[type=password],select{width:100%;padding:12px 14px;border:1px solid var(--linea-2);border-radius:3px;background:var(--blanco);min-height:50px;font-size:16px;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus{outline:none;border-color:var(--hoja);box-shadow:0 0 0 3px rgba(47,93,58,.15)}
+
+/* Foto */
+.visor{margin-top:14px;border:1px solid var(--linea-2);border-radius:3px;background:var(--blanco);min-height:210px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.visor-vacio{text-align:center;color:var(--tinta-3);padding:24px}
+.visor-vacio svg{width:58px;height:58px;color:var(--linea-2);stroke-width:1.2}
+.visor-vacio p{margin:8px 0 0;font-size:14px}
+.visor::before,.visor::after{content:"";position:absolute;width:18px;height:18px;border-color:var(--tinta-3);border-style:solid;pointer-events:none;z-index:2}
+.visor::before{top:10px;left:10px;border-width:1.5px 0 0 1.5px}
+.visor::after{bottom:10px;right:10px;border-width:0 1.5px 1.5px 0}
+#imgPreview{display:none;width:100%;max-height:440px;object-fit:contain;background:#ece6d6}
+#video{position:absolute;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none}
+#lienzo{display:none;width:100%;height:auto;max-height:70vh;object-fit:contain;background:#000}
+/* Panel de detección en vivo */
+.vivo-panel{display:none;margin-top:10px;background:var(--tinta);color:var(--papel);border-radius:3px;padding:14px 16px}
+.vivo-cab{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.vivo-rec{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#22c55e;display:inline-flex;align-items:center;gap:8px}
+.vivo-rec i{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulso 1.2s infinite}
+@keyframes pulso{50%{opacity:.2}}
+.vivo-fps{font-family:var(--mono);font-size:11px;color:rgba(243,238,226,.55)}
+.vivo-etq{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,238,226,.55)}
+.vivo-plaga{font-family:var(--serif);font-size:23px;line-height:1.2;margin-top:2px}
+.vivo-cient{font-family:var(--serif);font-style:italic;color:rgba(243,238,226,.7);font-size:14px}
+.vivo-barra{height:4px;background:rgba(243,238,226,.15);margin:10px 0 0}
+.vivo-barra div{height:100%;width:0;background:#22c55e;transition:width .3s}
+.vivo-datos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;border-top:1px solid rgba(243,238,226,.15);padding-top:10px}
+.vivo-datos b{display:block;font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.1;margin-top:2px}
+.vivo-msg{font-size:13.5px;color:#fcd34d;margin-top:10px}
+.vivo-msg:empty{display:none}
+.conmuta{display:flex;gap:6px;margin-bottom:10px}
+/* Asistente IA */
+.ia-fila{display:grid;grid-template-columns:1fr auto;gap:10px}
+@media(max-width:560px){.ia-fila{grid-template-columns:1fr}}
+.ia-modo{margin-top:10px;color:var(--tinta-3)}
+.ia-resp{margin-top:12px;background:var(--blanco);border:1px solid var(--linea);border-left:5px solid var(--rio);padding:14px 16px;font-size:15px}
+.ia-resp:empty{display:none}
+.ia-resp h4{font-family:var(--serif);font-weight:400;font-size:20px;margin:0 0 6px}
+.ia-resp h5{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--rio);margin:12px 0 4px}
+.ia-resp ul{margin:0;padding-left:20px}.ia-resp p{margin:0 0 8px}
+.ia-fuentes{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:10px;border-top:1px solid var(--linea)}
+.ia-fuentes button{border:1px solid var(--linea-2);background:transparent;border-radius:3px;padding:6px 10px;font-size:13px;font-weight:600;cursor:pointer}
+.ia-fuentes button:hover{border-color:var(--tinta);background:var(--papel)}
+.fila-btn.cuatro{grid-template-columns:repeat(4,1fr)}
+@media(max-width:760px){.fila-btn.cuatro{grid-template-columns:1fr 1fr}}
+.conmuta .chip{min-height:38px;padding:4px 12px;font-size:13px}
+.cam-ctrl{display:none;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+@media(max-width:600px){.cam-ctrl{grid-template-columns:1fr 1fr}.cam-ctrl #btnCapturar{grid-column:1/-1}}
+.foto-pie{display:none;justify-content:space-between;align-items:center;gap:10px;margin-top:8px}
+.foto-pie .mono{color:var(--tinta-3)}
+.foto-pie button{border:0;background:none;color:var(--terracota);font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:8px 0}
+.aviso-cam{display:none}
+
+/* Síntomas */
+.sintomas{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--linea);max-height:470px;overflow:auto}
+@media(max-width:600px){.sintomas{grid-template-columns:1fr}}
+.sint{display:flex;align-items:flex-start;gap:12px;padding:12px 10px;border-bottom:1px solid var(--linea);cursor:pointer;font-size:14.5px;min-height:52px;transition:background .15s}
+.sint:hover{background:var(--blanco)}
+.sint input{width:20px;height:20px;accent-color:var(--hoja);flex:0 0 20px;margin:1px 0 0}
+.sint.on{background:var(--hoja-cl)}
+.sin-cultivo{grid-column:1/-1;padding:22px;text-align:center;color:var(--tinta-3);font-family:var(--serif);font-style:italic;font-size:16px}
+.dos-sel{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.dos-sel{grid-template-columns:1fr}}
+.acciones{display:grid;grid-template-columns:1.5fr 1fr;gap:10px}
+@media(max-width:899px){.acciones{position:sticky;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom) + 10px);z-index:30}.acciones .btn{box-shadow:0 8px 20px rgba(29,27,22,.25)}}
+
+/* =================== INFORME =================== */
+#resultado{display:none;margin-top:10px}
+.informe{background:var(--blanco);border:1px solid var(--linea-2);border-radius:4px;overflow:hidden;margin-bottom:22px}
+.inf-cab{background:var(--tinta);color:var(--papel);padding:18px 22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.inf-cab .etq{color:rgba(243,238,226,.55)}
+.inf-cab h2{margin:4px 0 0;font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1}
+.inf-meta{text-align:right;font-family:var(--mono);font-size:12px;line-height:1.7;color:rgba(243,238,226,.8)}
+.inf-meta b{color:var(--clorosis);font-weight:600}
+@media(max-width:560px){.inf-meta{text-align:left}}
+.inf-cuerpo{padding:22px}
+.datos{display:grid;grid-template-columns:1fr 1.7fr 1fr;border:1px solid var(--linea);border-radius:3px}
+.dato{padding:14px 16px;border-right:1px solid var(--linea)}
+.dato:last-child{border-right:0}
+.dato .etq{display:block;margin-bottom:6px}
+.dato .val{font-family:var(--serif);font-size:21px;line-height:1.2}
+.dato .cient{font-family:var(--serif);font-style:italic;color:var(--tinta-2);font-size:14.5px;margin-top:2px}
+.dato .sub{font-size:12.5px;color:var(--tinta-3);margin-top:4px}
+.conf-barra{height:4px;background:var(--papel-2);margin-top:10px}
+.conf-barra div{height:100%;background:var(--tinta)}
+@media(max-width:760px){.datos{grid-template-columns:1fr 1fr}.dato.ancho{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--linea);order:-1}.dato:nth-child(1){border-right:1px solid var(--linea)}}
+
+/* Escala de tejido: sano → leve → moderado → grave */
+.escala-tit{display:flex;justify-content:space-between;align-items:baseline;margin:20px 0 8px}
+.escala{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.esc{padding:10px 10px 8px;position:relative;opacity:.32;transition:opacity .2s}
+.esc b{display:block;font-size:13.5px;font-weight:700}
+.esc span{font-size:11.5px;display:block;line-height:1.3}
+.esc.sano{background:var(--hoja);color:var(--blanco)}
+.esc.leve{background:var(--clorosis);color:var(--tinta)}
+.esc.moderado{background:var(--mango);color:var(--tinta)}
+.esc.grave{background:var(--necrosis);color:var(--blanco)}
+.esc.actual{opacity:1;box-shadow:0 0 0 2px var(--tinta)}
+.esc.actual::after{content:"";position:absolute;left:50%;bottom:-9px;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--tinta)}
+@media(max-width:520px){.esc span{display:none}}
+.nivel{display:inline-block;padding:3px 10px;border-radius:2px;font-family:var(--mono);font-weight:700;text-transform:uppercase;font-size:11.5px;letter-spacing:.1em}
+.nivel.sano{background:var(--hoja);color:var(--blanco)}
+.nivel.leve{background:var(--clorosis);color:var(--tinta)}
+.nivel.moderado{background:var(--mango);color:var(--tinta)}
+.nivel.grave{background:var(--necrosis);color:var(--blanco)}
+
+.aviso{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:12px 14px;margin:16px 0 0;font-size:14.5px;border-left:4px solid}
+.aviso .ico{margin-top:1px}
+.aviso.oficial{background:var(--b-bg);border-color:var(--necrosis);color:#5c1d12}
+.aviso.info{background:var(--d-bg);border-color:var(--rio);color:#123b42}
+.aviso.nota-a{background:var(--c-bg);border-color:var(--mango);color:#5a3510}
+.diag{margin:18px 0 0;font-family:var(--serif);font-size:18px;line-height:1.55}
+.diag .etq{display:block;font-family:var(--mono);margin-bottom:6px}
+
+/* Análisis de imagen */
+.analisis-img{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:800px){.analisis-img{grid-template-columns:1fr}}
+.analisis-img img{width:100%;display:block;border:1px solid var(--linea-2)}
+.dano-total{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--linea);padding-bottom:10px;margin-bottom:10px}
+.dano-total b{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1;white-space:nowrap}
+.dano-total span{font-size:14px;color:var(--tinta-2)}
+.color-row{display:grid;grid-template-columns:14px 1fr 120px 54px;gap:10px;align-items:center;font-size:14px;padding:6px 0;border-bottom:1px dotted var(--linea)}
+.color-row i{width:12px;height:12px;display:block}
+.color-row .b{height:6px;background:var(--papel-2)}
+.color-row .b div{height:100%}
+.color-row b{text-align:right;font-family:var(--mono);font-weight:600;font-size:13px}
+@media(max-width:420px){.color-row{grid-template-columns:12px 1fr 70px 48px;font-size:13px}}
+.mapa-pie{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--tinta-3);margin-top:6px}
+
+/* =================== TABLA OBLIGATORIA =================== */
+.tabla-res{width:100%;border-collapse:collapse;background:var(--blanco);border:1px solid var(--linea-2)}
+.tabla-res th{background:var(--tinta);color:var(--papel);text-align:left;padding:12px 14px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;vertical-align:bottom}
+.tabla-res td{vertical-align:top;padding:16px 14px;border-right:1px solid var(--linea);font-size:14.5px}
+.tabla-res td:last-child{border-right:0}
+.tabla-res th:nth-child(1),.tabla-res td:nth-child(1){width:17%}
+.tabla-res th:nth-child(2),.tabla-res td:nth-child(2){width:12%}
+.tabla-res th:nth-child(3),.tabla-res td:nth-child(3){width:23%}
+.tabla-res ul{margin:0;padding-left:18px}
+.tabla-res li{margin-bottom:6px}
+.tabla-res .nom{font-family:var(--serif);font-size:18px;line-height:1.2}
+.tabla-res .cient{font-family:var(--serif);font-style:italic;color:var(--tinta-2);font-size:14px;margin:4px 0 10px}
+.tabla-res .cul{font-family:var(--serif);font-size:18px}
+.bloque{padding:12px 14px 13px;margin-bottom:10px;border-left:5px solid}
+.bloque:last-child{margin-bottom:0}
+.bloque-cab{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.bloque-cab .letra{font-family:var(--serif);font-size:24px;line-height:1}
+.bloque-cab b{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.bloque-cab small{font-family:var(--serif);font-style:italic;font-size:14px;opacity:.8}
+.bloque p{margin:0}
+.bloque.a{background:var(--a-bg);border-color:var(--hoja)}.bloque.a .bloque-cab{color:var(--hoja)}
+.bloque.b{background:var(--b-bg);border-color:var(--terracota)}.bloque.b .bloque-cab{color:var(--terracota)}
+.bloque.c{background:var(--c-bg);border-color:var(--mango)}.bloque.c .bloque-cab{color:#8f4b12}
+.bloque.d{background:var(--d-bg);border-color:var(--rio)}.bloque.d .bloque-cab{color:var(--rio)}
+.bloque.d p{font-family:var(--serif);font-size:16.5px;line-height:1.5}
+.resaltar{animation:destello 1.6s ease}
+@keyframes destello{0%,100%{box-shadow:none}30%{box-shadow:0 0 0 4px var(--clorosis)}}
+@media(max-width:820px){
+  .tabla-res thead{display:none}
+  .tabla-res,.tabla-res tbody,.tabla-res tr,.tabla-res td{display:block;width:100%!important}
+  .tabla-res td{border-right:0;border-bottom:1px solid var(--linea)}
+  .tabla-res td:last-child{border-bottom:0}
+  .tabla-res td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--papel);background:var(--tinta);margin:-16px -14px 14px;padding:9px 14px}
+}
+.alt{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--linea)}
+.alt:last-child{border-bottom:0}
+.alt b{font-family:var(--serif);font-weight:400;font-size:17px}
+.alt small{display:block;font-family:var(--serif);font-style:italic;color:var(--tinta-3)}
+.alt .pct{font-family:var(--mono);font-size:12px;color:var(--tinta-2)}
+.alt button{border:1px solid var(--linea-2);border-radius:3px;padding:8px 12px;font-weight:600;cursor:pointer;background:transparent;min-height:42px;font-size:13.5px}
+.alt button:hover{border-color:var(--tinta);background:var(--blanco)}
+@media(max-width:520px){.alt{grid-template-columns:1fr auto}.alt button[data-ficha]{display:none}}
+
+/* =================== BUSCAR PLAGA =================== */
+.buscador{display:grid;grid-template-columns:1fr 210px 150px;gap:10px}
+@media(max-width:760px){.buscador{grid-template-columns:1fr 1fr}.buscador .campo{grid-column:1/-1}}
+.campo{position:relative}
+.campo .ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--tinta-3)}
+.campo input{padding-left:44px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--linea-2);background:transparent;border-radius:3px;padding:6px 14px;cursor:pointer;min-height:44px;font-size:14px;font-weight:600;color:var(--tinta-2)}
+.chip.sel{background:var(--tinta);border-color:var(--tinta);color:var(--papel)}
+.conteo{display:flex;justify-content:space-between;margin:22px 0 10px;border-bottom:1px solid var(--linea-2);padding-bottom:8px}
+.catalogo{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--linea-2);border-left:1px solid var(--linea-2)}
+@media(max-width:1040px){.catalogo{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.catalogo{grid-template-columns:1fr}}
+.ficha{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;text-align:left;background:var(--lamina);border:0;border-right:1px solid var(--linea-2);border-bottom:1px solid var(--linea-2);padding:18px;cursor:pointer;color:inherit;transition:background .15s}
+.ficha:hover{background:var(--blanco)}
+.ficha .num{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--cacao)}
+.ficha h3{margin:2px 0 0;font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.2}
+.ficha i{display:block;font-family:var(--serif);color:var(--tinta-2);font-size:14px;margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--linea-2);color:var(--tinta-2)}
+.tag.regl{border-color:var(--necrosis);color:var(--necrosis)}
+.vacio{grid-column:1/-1;padding:40px;text-align:center;font-family:var(--serif);font-style:italic;color:var(--tinta-3);background:var(--lamina);border-right:1px solid var(--linea-2);border-bottom:1px solid var(--linea-2)}
+
+/* =================== MODAL / FICHA TÉCNICA =================== */
+.modal{position:fixed;inset:0;background:rgba(29,27,22,.55);z-index:200;display:none;align-items:flex-end;justify-content:center}
+.modal.abierto{display:flex}
+@media(min-width:760px){.modal{align-items:center;padding:24px}}
+.modal-caja{background:var(--lamina);width:100%;max-width:900px;max-height:92vh;overflow:auto;border-radius:6px 6px 0 0;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+@media(min-width:760px){.modal-caja{border-radius:4px}}
+.modal-cab{position:sticky;top:0;background:var(--tinta);color:var(--papel);padding:12px 18px;display:flex;align-items:center;gap:12px;z-index:2}
+.modal-cab .etq{color:rgba(243,238,226,.7);flex:1}
+.modal-cab button{background:transparent;border:1px solid rgba(243,238,226,.3);color:var(--papel);border-radius:3px;width:40px;height:40px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.modal-cuerpo{padding:24px}
+.lamina{display:grid;grid-template-columns:320px 1fr;gap:26px}
+@media(max-width:760px){.lamina{grid-template-columns:1fr}}
+.lam-foto{border:1px solid var(--linea-2);background:var(--blanco);padding:10px}
+.lam-img{height:240px;display:flex;align-items:center;justify-content:center;background:var(--papel);overflow:hidden;color:var(--tinta-3);text-align:center;padding:20px}
+.lam-img .sin-foto{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--tinta-2)}
+.lam-img .sin-foto small{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-3);margin-top:8px}
+.lam-img img{width:100%;height:100%;object-fit:cover}
+.lam-pie{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--tinta-3);margin-top:8px;line-height:1.5}
+.lam-nom{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;margin:4px 0 0}
+.lam-cient{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--tinta-2);margin:4px 0 16px}
+.dl{display:grid;grid-template-columns:120px 1fr;margin:0;border-top:1px solid var(--linea)}
+.dl dt,.dl dd{padding:8px 0;border-bottom:1px solid var(--linea);margin:0;font-size:14.5px}
+.dl dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-3);padding-top:10px}
+.lam-sec{margin-top:24px}
+.lam-sec h3{font-family:var(--serif);font-weight:400;font-size:21px;margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--linea-2)}
+.lam-sec ul{margin:0 0 4px;padding-left:20px}
+.lam-sec li{margin-bottom:4px}
+.lam-dos{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.lam-dos{grid-template-columns:1fr}}
+.enlaces{display:flex;flex-wrap:wrap;gap:8px}
+.enlaces a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--linea-2);padding:9px 12px;border-radius:3px;font-weight:600;text-decoration:none;font-size:13.5px;color:var(--tinta)}
+.enlaces a:hover{border-color:var(--tinta);background:var(--blanco)}
+.switch{display:flex;align-items:center;gap:10px;font-weight:600;padding:12px 0;cursor:pointer}
+.switch input{width:22px;height:22px;accent-color:var(--hoja)}
+
+/* =================== METODOLOGÍA =================== */
+.met{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:960px){.met{grid-template-columns:1fr}}
+.pasos{list-style:none;margin:0;padding:0}
+.pasos li{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--linea);font-size:14.5px}
+.pasos li:last-child{border-bottom:0}
+.pasos li span{font-family:var(--serif);font-size:24px;color:var(--cacao);line-height:1}
+.codigo{display:grid;gap:0;border-top:1px solid var(--linea)}
+.cod{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--linea);font-size:14.5px}
+.cod i{height:30px;display:block}
+.cod b{display:block;font-weight:600}
+.cod small{color:var(--tinta-2)}
+.fuentes{list-style:none;margin:0;padding:0}
+.fuentes li{padding:11px 0;border-bottom:1px solid var(--linea);font-size:14.5px}
+.fuentes li:last-child{border-bottom:0}
+.fuentes small{display:block;color:var(--tinta-3)}
+
+/* =================== AVISO, CARGA Y PIE =================== */
+#toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + 22px);transform:translateX(-50%) translateY(220%);background:var(--tinta);color:var(--papel);padding:13px 18px;border-radius:3px;z-index:400;max-width:92vw;font-size:14.5px;transition:transform .3s,opacity .3s,visibility .3s;box-shadow:0 10px 30px rgba(0,0,0,.3);border-left:4px solid var(--clorosis)}
+#toast{opacity:0;visibility:hidden}
+#toast.ver{transform:translateX(-50%) translateY(0);opacity:1;visibility:visible}
+@media(min-width:900px){#toast{bottom:26px}}
+#carga{position:fixed;inset:0;background:rgba(243,238,226,.94);z-index:250;display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;text-align:center;padding:20px}
+#carga.ver{display:flex}
+#carga svg{width:120px;height:84px;color:var(--tinta)}
+#carga .iris{animation:mirar 1.4s ease-in-out infinite;transform-origin:56px 37.5px}
+@keyframes mirar{0%,100%{transform:translateX(-5px)}50%{transform:translateX(6px)}}
+#carga b{font-family:var(--serif);font-weight:400;font-size:24px}
+.pie{margin-top:36px;padding-top:14px;border-top:1px solid var(--linea-2);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;color:var(--tinta-3)}
+
+/* =================== IMPRESIÓN: SOLO EL INFORME =================== */
+@media print{
+  .cab,.nav,.no-print,#tab-buscar,#tab-ayuda,#toast,#portada,.pie,.pag{display:none!important}
+  main{padding:0!important;max-width:none}
+  body{background:#fff;font-size:11.5px}
+  #resultado{display:block!important}
+  .informe,.sec{break-inside:avoid;border-color:#999}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<!-- =====================================================================
+     SVG: LOGOTIPO, ILUSTRACIONES DE CULTIVOS, LÁMINAS DE ORGANISMOS E ICONOS
+     ===================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <!-- Logotipo: Ojo de Horus (Wedjat). La espiral inferior termina en un brote: la vigilancia que protege la cosecha. -->
+  <symbol id="logo" viewBox="0 0 120 84">
+    <path d="M8 17C34 4 84 2 112 12L110 19C84 10 36 12 10 24Z" fill="currentColor"/>
+    <path d="M10 41C28 23 78 21 104 37C80 49 36 53 10 41Z" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linejoin="round"/>
+    <path d="M104 37H117" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"/>
+    <g class="iris"><circle cx="56" cy="37.5" r="10" fill="currentColor"/><circle cx="59.5" cy="34" r="2.6" fill="#f3eee2"/></g>
+    <path d="M38 48L36 76L43 76L45 47Z" fill="currentColor"/>
+    <path d="M62 49C64 62 72 70 82 69" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"/>
+    <path d="M82 69C86 58 98 54 110 57C104 68 92 74 82 69Z" fill="#2f5d3a"/>
+    <path d="M85 67.5C92 63 99 60.5 105 59" stroke="#f3eee2" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+  </symbol>
+
+
+  <!-- Iconos de interfaz -->
+  <symbol id="i-camara" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="i-subir" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></symbol>
+  <symbol id="i-imagen" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+  <symbol id="i-buscar" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></symbol>
+  <symbol id="i-ajustes" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+  <symbol id="i-tabla" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="20"/></symbol>
+  <symbol id="i-analizar" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><line x1="20" y1="20" x2="15" y2="15"/><path d="M7 10h1.5l1-2 1.5 4 1-2H13"/></symbol>
+  <symbol id="i-imprimir" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol>
+  <symbol id="i-mas" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="i-cerrar" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="i-girar" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+  <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="11"/><line x1="12" y1="7.5" x2="12.01" y2="7.5"/></symbol>
+  <symbol id="i-libro" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-hoja" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+  <symbol id="i-externo" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="1"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+</defs>
+</svg>
+
+<!-- ===================== PORTADA ===================== -->
+<section id="portada" aria-label="Presentación de Horus">
+  <div class="pt-marco">
+    <header class="pt-cab"><span class="mono">Horus · Versión 1.0</span><span class="mono">18°05′N · 96°07′O · Tuxtepec, Oax.</span></header>
+    <div class="pt-cuerpo">
+      <div class="pt-texto">
+        <p class="pt-eyebrow">Cuenca del Papaloapan · Oaxaca, México</p>
+        <h1 class="pt-titulo">Horus</h1>
+        <p class="pt-lema">El ojo que vigila tu cosecha.</p>
+        <p class="pt-desc">Vigilancia fitosanitaria para los huertos de San Juan Bautista Tuxtepec. Fotografía la hoja, el fruto o la mazorca; Horus reconoce la plaga, mide el daño y te entrega el plan para controlarla antes de perder la cosecha.</p>
+        <div class="pt-acciones">
+          <button class="btn btn-tinta" id="btnIngresar">Iniciar diagnóstico <svg class="ico"><use href="#i-flecha"/></svg></button>
+          <button class="btn btn-sec" id="btnIrBuscar"><svg class="ico"><use href="#i-buscar"/></svg>Buscar plaga</button>
+        </div>
+        <dl class="pt-datos">
+          <div><dt id="ptFichas">00</dt><dd>fichas técnicas</dd></div>
+          <div><dt id="ptCultivosN">06</dt><dd>cultivos de la región</dd></div>
+          <div><dt id="ptSintomas">00</dt><dd>síntomas de campo</dd></div>
+        </dl>
+      </div>
+      <div class="pt-sello">
+        <svg viewBox="0 0 320 320" role="img" aria-label="Sello de Horus">
+          <defs><path id="circTexto" d="M160,160 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs>
+          <circle cx="160" cy="160" r="154" fill="none" stroke="#1d1b16" stroke-width="1.5"/>
+          <circle cx="160" cy="160" r="146" fill="none" stroke="#1d1b16" stroke-width=".8"/>
+          <circle cx="160" cy="160" r="112" fill="#fbf8f0" stroke="#1d1b16" stroke-width="1.5"/>
+          <text font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#1d1b16"><textPath href="#circTexto" textLength="790" lengthAdjust="spacing">VIGILANCIA FITOSANITARIA · SAN JUAN BAUTISTA TUXTEPEC · OAXACA · MÉXICO ·</textPath></text>
+          <g fill="none" stroke="#1d1b16" stroke-width=".8" opacity=".35"><path d="M60 160h20M240 160h20M160 60v20M160 240v20"/></g>
+          <use href="#logo" x="82" y="112" width="156" height="110" style="color:#1d1b16"/>
+        </svg>
+      </div>
+    </div>
+    <footer class="pt-cultivos" id="ptCultivos"></footer>
+  </div>
+</section>
+
+<!-- ===================== ENCABEZADO ===================== -->
+<header class="cab">
+  <div class="cab-in">
+    <button class="marca" id="btnPortada" title="Ver presentación">
+      <svg><use href="#logo"/></svg>
+      <span><b>Horus</b><small>Vigilancia fitosanitaria</small></span>
+    </button>
+    <nav class="nav" role="tablist">
+      <button class="activo" data-tab="diag" role="tab"><svg class="ico"><use href="#i-analizar"/></svg><span>Diagnóstico</span></button>
+      <button data-tab="buscar" role="tab"><svg class="ico"><use href="#i-buscar"/></svg><span>Buscar Plaga</span></button>
+      <button data-tab="ayuda" role="tab"><svg class="ico"><use href="#i-libro"/></svg><span>Metodología</span></button>
+    </nav>
+    <div class="cab-der">
+      <span class="estado" id="estadoRed"><i></i><span>Sin conexión</span></span>
+      <button class="btn-cfg" id="btnAjustes" title="Configuración" aria-label="Configuración"><svg class="ico"><use href="#i-ajustes"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ===================== DIAGNÓSTICO ===================== -->
+<section class="panel activo" id="tab-diag">
+  <div class="pag no-print">
+    <div><span class="etq">Hoja de campo</span><h1>Nuevo diagnóstico</h1><p>Registra la muestra en tres pasos: cultivo, fotografía y lo que observas en la planta.</p></div>
+    <div class="fecha mono" id="fechaHoy"></div>
+  </div>
+
+  <div class="hoja-campo">
+    <div>
+      <div class="sec no-print">
+        <div class="sec-cab"><span class="sec-num">I</span><div><h2>Cultivo</h2><p>¿Qué planta vas a revisar?</p></div></div>
+        <div class="cultivos" id="listaCultivos"></div>
+        <div id="otroCultivoBox" class="oculto">
+          <label class="lbl" for="otroCultivo">Nombre del cultivo o planta</label>
+          <input type="text" id="otroCultivo" placeholder="Papaya, chile, maíz, plátano, piña…" maxlength="60">
+        </div>
+      </div>
+
+      <div class="sec no-print">
+        <div class="sec-cab"><span class="sec-num">II</span><div><h2>Fotografía y cámara en vivo</h2><p>La cámara marca en vivo, con recuadros verdes, la hoja y las zonas dañadas. Acércate con luz de día y sin sombra encima.</p></div></div>
+        <div class="fila-btn">
+          <button class="btn btn-tinta" id="btnCamara"><svg class="ico"><use href="#i-camara"/></svg>Cámara</button>
+          <button class="btn btn-sec" id="btnSubir"><svg class="ico"><use href="#i-subir"/></svg>Subir Foto</button>
+        </div>
+        <input type="file" id="inputArchivo" accept="image/*" hidden>
+        <input type="file" id="inputCaptura" accept="image/*" capture="environment" hidden>
+
+        <div class="visor" id="visor">
+          <div class="visor-vacio" id="visorVacio"><p>Aún no hay fotografía de la muestra.</p></div>
+          <video id="video" playsinline autoplay muted></video>
+          <canvas id="lienzo" aria-label="Cámara en vivo con detecciones"></canvas>
+          <img id="imgPreview" alt="Muestra a analizar">
+        </div>
+        <div class="vivo-panel" id="vivoPanel">
+          <div class="vivo-cab"><span class="vivo-rec"><i></i>DETECCIÓN EN VIVO</span><span class="vivo-fps" id="vivoFps">— cuadros/s</span></div>
+          <span class="vivo-etq">Plaga probable</span>
+          <div class="vivo-plaga" id="vivoPlaga">Buscando…</div>
+          <div class="vivo-cient" id="vivoCient"></div>
+          <div class="vivo-barra"><div id="vivoBarra"></div></div>
+          <div class="vivo-datos">
+            <div><span class="vivo-etq">Afinidad</span><b id="vivoConf">—</b></div>
+            <div><span class="vivo-etq">Tejido dañado</span><b id="vivoDano">—</b></div>
+            <div><span class="vivo-etq">Puntos blancos</span><b id="vivoPuntos">—</b></div>
+          </div>
+          <div class="vivo-msg" id="vivoMsg"></div>
+        </div>
+        <div class="cam-ctrl" id="camCtrl">
+          <button class="btn btn-pri" id="btnCapturar"><svg class="ico"><use href="#i-camara"/></svg>Capturar y analizar</button>
+          <button class="btn btn-sec" id="btnGirar"><svg class="ico"><use href="#i-girar"/></svg>Girar</button>
+          <button class="btn btn-sec" id="btnCerrarCam"><svg class="ico"><use href="#i-cerrar"/></svg>Detener</button>
+        </div>
+        <div class="foto-pie" id="fotoPie"><span class="mono" id="pieFoto"></span><button id="btnQuitarFoto"><svg class="ico sm"><use href="#i-cerrar"/></svg>Quitar foto</button></div>
+        <div class="aviso nota-a aviso-cam" id="avisoCam">
+          <svg class="ico"><use href="#i-info"/></svg>
+          <div><span id="avisoCamTxt"></span>
+            <button class="btn btn-sec" id="btnCamSistema" style="margin-top:10px;width:100%"><svg class="ico"><use href="#i-camara"/></svg>Abrir cámara del dispositivo</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec no-print">
+        <div class="sec-cab"><span class="sec-num">III</span><div><h2>Observación</h2><p>Marca todo lo que veas. Cada síntoma afina el diagnóstico.</p></div></div>
+        <div class="sintomas" id="listaSintomas"><div class="sin-cultivo">Elige primero el cultivo para ver sus síntomas.</div></div>
+        <div class="dos-sel">
+          <div>
+            <label class="lbl" for="selExtension">Extensión del daño</label>
+            <select id="selExtension">
+              <option value="una">Una planta / foco</option>
+              <option value="algunas">Algunas (menos de 25 %)</option>
+              <option value="muchas">Muchas (más de 25 %)</option>
+            </select>
+          </div>
+          <div>
+            <label class="lbl" for="selClima">Clima reciente</label>
+            <select id="selClima">
+              <option value="humedo">Lluvioso / húmedo</option>
+              <option value="seco">Seco y caluroso</option>
+              <option value="normal">Normal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="acciones no-print">
+        <button class="btn btn-pri" id="btnAnalizar"><svg class="ico"><use href="#i-analizar"/></svg>Analizar</button>
+        <button class="btn btn-sec" id="btnVerTabla" disabled><svg class="ico"><use href="#i-tabla"/></svg>Ver Tabla</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== INFORME ===================== -->
+  <div id="resultado">
+    <article class="informe">
+      <div class="inf-cab">
+        <div><span class="etq">Informe fitosanitario</span><h2 id="resTitulo">Resultado del análisis</h2></div>
+        <div class="inf-meta" id="resMeta"></div>
+      </div>
+      <div class="inf-cuerpo">
+        <div class="datos" id="resDatos"></div>
+        <div class="escala-tit"><span class="etq">Nivel de daño en el tejido</span><span class="mono" id="resRiesgo"></span></div>
+        <div class="escala" id="resEscala"></div>
+        <div id="resAvisos"></div>
+        <div class="diag" id="resDiagnostico"></div>
+      </div>
+    </article>
+
+    <div class="sec" id="cardColor">
+      <div class="sec-cab"><span class="sec-num">A</span><div><h2>Lectura de la imagen</h2><p>Recuadros verdes: hoja detectada y zonas con síntomas. El mapa muestra cada punto clasificado por color.</p></div></div>
+      <div class="analisis-img">
+        <div><div class="conmuta no-print"><button class="chip sel" id="btnVerDet">Detecciones</button><button class="chip" id="btnVerMapa">Mapa de síntomas</button></div>
+          <img id="resMapa" alt="Detecciones sobre la imagen"><div class="mapa-pie" id="mapaPie"></div></div>
+        <div id="resColores"></div>
+      </div>
+    </div>
+
+    <div class="sec" id="cardTabla">
+      <div class="sec-cab"><span class="sec-num">B</span><div><h2>Tabla de resultado</h2><p>Plaga, cultivo, causas y plan de control.</p></div></div>
+      <table class="tabla-res">
+        <thead><tr><th>Plaga Identificada</th><th>Cultivo Afectado</th><th>Motivos / Por qué se dio la plaga</th><th>Cómo combatirla</th></tr></thead>
+        <tbody id="resTabla"></tbody>
+      </table>
+    </div>
+
+    <div class="sec no-print" id="cardAlt">
+      <div class="sec-cab"><span class="sec-num">C</span><div><h2>Otras posibilidades</h2><p>Si lo que ves en campo no coincide, revisa estas opciones.</p></div></div>
+      <div id="resAlternativas"></div>
+    </div>
+
+    <div class="fila-btn cuatro no-print">
+      <button class="btn btn-pri" id="btnConfirmar"><svg class="ico"><use href="#i-check"/></svg>Confirmar diagnóstico</button>
+      <button class="btn btn-sec" id="btnFichaRes"><svg class="ico"><use href="#i-libro"/></svg>Ver ficha técnica</button>
+      <button class="btn btn-sec" id="btnImprimir"><svg class="ico"><use href="#i-imprimir"/></svg>Imprimir / PDF</button>
+      <button class="btn btn-tinta" id="btnNuevo"><svg class="ico"><use href="#i-mas"/></svg>Nuevo diagnóstico</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BUSCAR PLAGA ===================== -->
+<section class="panel" id="tab-buscar">
+  <div class="pag">
+    <div><span class="etq">Catálogo</span><h1>Buscar plaga</h1><p>Consulta las fichas técnicas por nombre común, nombre científico, síntoma o cultivo, sin necesidad de foto.</p></div>
+  </div>
+  <div class="sec">
+    <div class="sec-cab"><span class="sec-num">IA</span><div><h2>Pregunta a Horus</h2><p>Escribe tu duda como se la harías a un técnico. La respuesta se construye con las fichas de la base de datos.</p></div></div>
+    <div class="ia-fila">
+      <input type="text" id="txtPregunta" placeholder="¿Cómo controlo la broca del café sin químicos?" autocomplete="off">
+      <button class="btn btn-pri" id="btnPreguntar"><svg class="ico"><use href="#i-chip"/></svg>Preguntar</button>
+    </div>
+    <div class="ia-modo mono" id="iaModo"></div>
+    <div class="ia-resp" id="iaResp"></div>
+  </div>
+  <div class="buscador">
+    <div class="campo"><svg class="ico"><use href="#i-buscar"/></svg>
+      <input type="search" id="txtBuscar" placeholder="Dragón amarillo, monilia, Diaphorina, trips…" autocomplete="off"></div>
+    <select id="selTipo" aria-label="Tipo de organismo">
+      <option value="">Todo organismo</option>
+      <option>Insecto</option><option>Ácaro</option><option>Hongo</option><option>Bacteria</option><option>Oomiceto</option>
+    </select>
+    <button class="btn btn-tinta" id="btnBuscar"><svg class="ico"><use href="#i-buscar"/></svg>Buscar</button>
+  </div>
+  <div class="chips" id="chipsCultivo"></div>
+  <div class="conteo"><span class="etq" id="contBusqueda"></span><span class="etq">Toca una ficha para abrirla</span></div>
+  <div class="catalogo" id="listaFichas"></div>
+</section>
+
+<!-- ===================== METODOLOGÍA ===================== -->
+<section class="panel" id="tab-ayuda">
+  <div class="pag">
+    <div><span class="etq">Metodología</span><h1>Cómo trabaja Horus</h1><p>Lo que hace el sistema con tu muestra, qué significa cada color y de dónde viene la información.</p></div>
+  </div>
+  <div class="met">
+    <div>
+      <div class="sec">
+        <div class="sec-cab"><span class="sec-num">I</span><div><h2>Procedimiento</h2></div></div>
+        <ol class="pasos">
+          <li><span>1</span><div><b>Lectura de la imagen.</b> Horus separa la planta del fondo (ropa, piel, suelo, cielo) y solo mide el tejido de la hoja o el fruto. Cada punto se clasifica como verde sano, amarillamiento (clorosis), necrosis café, mancha oscura, punto o masa blanca, raspado plateado o tono rojizo. Los puntos blancos se detectan por contraste contra el verde que los rodea.</div></li>
+          <li><span>·</span><div><b>Detección en vivo.</b> Con la cámara abierta, Horus analiza varios cuadros por segundo, encierra en recuadros verdes la hoja y cada zona con síntomas, y muestra la plaga probable. El resultado se suaviza entre cuadros para que no salte con cada movimiento. «Capturar y analizar» congela el cuadro y genera el informe completo.</div></li>
+          <li><span>2</span><div><b>Observación de campo.</b> Los síntomas que marcas se comparan con los síntomas clave de cada ficha técnica.</div></li>
+          <li><span>3</span><div><b>Contexto.</b> El cultivo, el clima reciente y la extensión del daño ponderan cada plaga y fijan el nivel: leve, moderado o grave.</div></li>
+          <li><span>4</span><div><b>Informe.</b> Se genera la tabla con motivos y el plan de control en cuatro apartados, más las otras posibilidades.</div></li>
+          <li><span>5</span><div><b>Aprendizaje automático (k-NN).</b> Cada diagnóstico que confirmas se guarda como ejemplo. Horus compara cada caso nuevo con los ejemplos más parecidos del mismo cultivo y ajusta el resultado: entre más se usa, mejor reconoce las plagas de tu huerto.</div></li>
+          <li><span>6</span><div><b>IA en la nube (opcional).</b> Con una clave de API de Anthropic en Configuración, Claude revisa la foto directamente, identifica cultivo y plaga, y responde las preguntas de «Pregunta a Horus» usando las fichas de la base de datos. Sin conexión, Horus sigue trabajando con el análisis local.</div></li>
+        </ol>
+        <div class="aviso oficial"><svg class="ico"><use href="#i-alerta"/></svg><div>Plagas reglamentadas (Dragón amarillo / HLB, mosca del Mediterráneo, escoba de bruja): confirma con laboratorio y avisa a la <b>Junta Local de Sanidad Vegetal</b> o a <b>SENASICA</b>. Usa solo productos con registro vigente y respeta la dosis y el intervalo de seguridad de la etiqueta.</div></div>
+      </div>
+      <div class="sec">
+        <div class="sec-cab"><span class="sec-num">II</span><div><h2>Computadora, sitio web y app</h2><p>El mismo código funciona en los tres modos.</p></div></div>
+        <ul class="fuentes">
+          <li><b>Computadora · Visual Studio Code</b><small>Abrir la carpeta Horus → clic derecho en index.html → Open with Live Server (http://localhost:5500).</small></li>
+          <li><b>Sitio web · enlace https</b><small>Publicar la carpeta en GitHub Pages o Netlify; se obtiene un enlace https:// para compartir.</small></li>
+          <li><b>App · Android (Chrome)</b><small>Abrir el enlace https → menú ⋮ → Instalar aplicación.</small></li>
+          <li><b>App · iPhone (Safari)</b><small>Abrir el enlace https → Compartir → Agregar a inicio.</small></li>
+        </ul>
+        <p class="nota">La cámara en vivo con recuadros verdes solo está permitida por los navegadores en direcciones <b>https://</b> o <b>localhost</b>. Instalada desde su enlace https, la app abre y analiza sin internet después de la primera visita. Estado de esta página: <b id="estadoSeguro"></b></p>
+      </div>
+    </div>
+    <div>
+      <div class="sec">
+        <div class="sec-cab"><span class="sec-num">III</span><div><h2>Código de color</h2><p>Los colores reproducen lo que le pasa al tejido de la planta.</p></div></div>
+        <div class="codigo">
+          <div class="cod"><i style="background:var(--hoja)"></i><div><b>Verde hoja · Sano</b><small>Tejido vivo. También marca el apartado Preventivo.</small></div></div>
+          <div class="cod"><i style="background:var(--clorosis)"></i><div><b>Amarillo · Leve</b><small>Clorosis: el primer aviso de que la hoja pierde clorofila.</small></div></div>
+          <div class="cod"><i style="background:var(--mango)"></i><div><b>Naranja · Moderado</b><small>El daño avanza. También marca el apartado Predictivo.</small></div></div>
+          <div class="cod"><i style="background:var(--necrosis)"></i><div><b>Café rojizo · Grave</b><small>Necrosis: tejido muerto. También marca avisos oficiales.</small></div></div>
+          <div class="cod"><i style="background:var(--terracota)"></i><div><b>Terracota · Correctivo</b><small>Lo que hay que hacer ya, en los focos.</small></div></div>
+          <div class="cod"><i style="background:var(--rio)"></i><div><b>Azul río · Respuesta</b><small>La conclusión del análisis, como el Papaloapan que une la región.</small></div></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-cab"><span class="sec-num">IV</span><div><h2>Fuentes</h2></div></div>
+        <ul class="fuentes">
+          <li><a href="https://www.gob.mx/senasica" target="_blank" rel="noopener">SENASICA México</a><small>Plagas reglamentadas, HLB, moscas de la fruta, plagas del cacao.</small></li>
+          <li><a href="https://plantwiseplusknowledgebank.org" target="_blank" rel="noopener">PlantwisePlus Knowledge Bank · CABI</a><small>Fichas de cítricos, mango, cacao y anonáceas.</small></li>
+          <li><a href="https://www.croplifela.org/es/plagas/listado-de-plagas" target="_blank" rel="noopener">CropLife Latin America</a><small>Listado de plagas.</small></li>
+          <li><a href="https://www.google.com/search?q=Certis+Belchim+principales+plagas+en+c%C3%ADtricos+y+c%C3%B3mo+combatirlas" target="_blank" rel="noopener">Certis Belchim</a><small>Las principales plagas en cítricos y cómo combatirlas.</small></li>
+          <li><a href="https://mexico.inaturalist.org" target="_blank" rel="noopener">iNaturalist México</a><small>Fotografías de campo (se cargan en las fichas con internet).</small></li>
+          <li><a href="https://www.insectimages.org" target="_blank" rel="noopener">Bugwood · Insect Images</a><small>Banco de imágenes de insectos y daños.</small></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pie"><span class="etq">Horus · Vigilancia fitosanitaria</span><span class="etq">San Juan Bautista Tuxtepec, Oaxaca · 18°05′N 96°07′O</span></div>
+</main>
+
+<!-- ===================== MODAL ===================== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-caja">
+    <div class="modal-cab"><span class="etq" id="modalTitulo">Ficha</span><button id="btnCerrarModal" aria-label="Cerrar"><svg class="ico"><use href="#i-cerrar"/></svg></button></div>
+    <div class="modal-cuerpo" id="modalCuerpo"></div>
+  </div>
+</div>
+
+<div id="carga"><svg viewBox="0 0 120 84"><use href="#logo"/></svg><b id="cargaTxt">Analizando la muestra</b><span class="etq">Horus está revisando la planta</span></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+/* =========================================================================
+   HORUS · VIGILANCIA FITOSANITARIA
+   1. Datos: cultivos, síntomas y base de datos de plagas
+   2. Utilidades
+   3. Portada, navegación, cultivos y síntomas
+   4. Cámara y fotografía
+   5. Motor de análisis local (imagen + síntomas + clima)
+   6. IA en la nube (opcional, Claude)
+   7. Informe y tabla obligatoria
+   8. Buscar plaga: catálogo y fichas técnicas
+   9. Configuración
+   10. Inicio
+   ========================================================================= */
+
+/* ======================== 1. DATOS ======================== */
+const CULTIVOS = {
+  limon:     { nombre:'Limón',        latin:'Citrus × latifolia' },
+  naranja:   { nombre:'Naranja',      latin:'Citrus × sinensis' },
+  guanabana: { nombre:'Guanábana',    latin:'Annona muricata' },
+  mango:     { nombre:'Mango',        latin:'Mangifera indica' },
+  cacao:     { nombre:'Cacao',        latin:'Theobroma cacao' },
+  cafe:      { nombre:'Café',         latin:'Coffea arabica' },
+  otro:      { nombre:'Otro cultivo', latin:'Cualquier especie' }
+};
+
+const SINTOMAS = {
+  hojas_amarillas:  'Hojas amarillas o con moteado amarillo',
+  frutos_deformes:  'Frutos pequeños, deformes o de maduración dispareja',
+  fruto_caido:      'Caída prematura de frutos',
+  insectos_pequenos:'Insectos pequeños visibles en brotes u hojas',
+  melaza:           'Melaza pegajosa u hollín negro (fumagina)',
+  hojas_enrolladas: 'Brotes u hojas nuevas enroscadas o deformes',
+  moscas_blancas:   'Mosquitas blancas que vuelan al mover las hojas',
+  algodon:          'Masas blancas algodonosas o cerosas',
+  fruto_podrido:    'Frutos con gusanos/larvas o pulpa podrida',
+  perforaciones:    'Perforaciones u orificios en fruto, tallo o rama',
+  telaranas:        'Telarañas finas y puntitos en el envés',
+  galerias:         'Galerías plateadas serpenteantes en hojas tiernas',
+  escamas:          'Escamas o costritas pegadas en hojas, ramas o frutos',
+  flores_danadas:   'Flores o botones florales dañados o secos',
+  cicatrices_fruto: 'Raspaduras o cicatrices plateadas/cafés en fruto',
+  manchas_negras:   'Manchas negras o cafés hundidas en hojas o frutos',
+  chinches:         'Chinches visibles o piquetes en frutos',
+  mazorca_mancha:   'Mazorca con mancha café y polvo blanco-crema',
+  mazorca_negra:    'Mazorca que se pone negra rápidamente',
+  brotes_escoba:    'Brotes hinchados en forma de escoba',
+  polvo_blanco_hoja:'Polvo blanco harinoso sobre hojas o flores',
+  pustulas:         'Pústulas anaranjadas o color óxido en el envés',
+  hojas_cortadas:   'Hojas cortadas (media luna) o cogollo comido',
+  hormigas:         'Muchas hormigas subiendo a la planta',
+  goma_tronco:      'Goma o corteza agrietada en la base del tronco',
+  orificio_cereza:  'Cerezas (frutos) con un orificio pequeño en la punta',
+  minas_cafe:       'Manchas cafés en el haz que se desprenden como papel',
+  brotes_quemados:  'Brotes y hojas tiernas cafés, como quemados (chamusquina)',
+  marchitez:        'Planta que se marchita de golpe con hojas secas pegadas'
+};
+
+const ETIQUETA = 'Dosis de referencia: confirma SIEMPRE la etiqueta del producto registrado (COFEPRIS), usa equipo de protección y respeta el intervalo de seguridad antes de cosechar.';
+
+/**
+ * BASE DE DATOS DE PLAGAS
+ * keys: peso de cada síntoma observado · vis: peso de cada rasgo de color de la foto
+ * pred.dias: días aproximados para empeorar según nivel [leve, moderado, grave]
+ * clima: 'humedo' | 'seco' | '' (condición que favorece la plaga)
+ * gravedad: 1 si es plaga de alto riesgo (sube el nivel de daño)
+ */
+const PLAGAS = [
+/* ---------------- CÍTRICOS ---------------- */
+{
+  id:'hlb', nombre:'Dragón amarillo (HLB / Huanglongbing)', alias:'enverdecimiento greening hlb',
+  cientifico:'Candidatus Liberibacter asiaticus (bacteria) · vector: Diaphorina citri', tipo:'Bacteria',
+  cultivos:['limon','naranja'], inat:'Candidatus Liberibacter asiaticus',
+  reglamentada:'Plaga reglamentada en México (Campaña contra el HLB de SENASICA). Confirma con análisis de laboratorio (PCR) y avisa a la Junta Local de Sanidad Vegetal.',
+  clima:'', gravedad:1,
+  sintomas:['Moteado amarillo ASIMÉTRICO en hojas (no igual a ambos lados de la nervadura).','Brotes amarillos en un sector del árbol.','Frutos pequeños, deformes, asimétricos, con semillas abortadas y sabor amargo.','Maduración invertida o dispareja y caída de frutos.','Muerte descendente de ramas en etapas avanzadas.'],
+  causas:['Presencia del psílido asiático (Diaphorina citri), que transmite la bacteria al alimentarse de brotes tiernos.','Plantas de vivero sin certificación sanitaria.','Huertos vecinos abandonados o traspatios con cítricos y limonaria (Murraya paniculata).','Brotaciones continuas (lluvias y fertilización desordenada) que atraen al psílido.'],
+  causaCorta:'la bacteria del HLB transmitida por el psílido asiático',
+  preventivo:['Sembrar solo plantas certificadas producidas bajo malla antiáfidos.','Colocar trampas amarillas pegajosas y revisar brotes tiernos cada 15 días.','Participar en el control regional (ARCO) coordinado por la Junta Local y SENASICA.','Eliminar limonaria (Murraya paniculata) y cítricos abandonados cercanos.','Nutrición balanceada y brotaciones sincronizadas para reducir el tiempo de exposición al psílido.'],
+  correctivo:['NO tiene cura: confirma con análisis PCR en laboratorio aprobado.','Árboles positivos: eliminarlos (arrancar y destruir) según indique la Junta Local, para no contagiar al resto del huerto.','Controlar YA al psílido vector en todo el huerto: aceite parafínico 1–1.5 % en brotes, Cordyceps (Isaria) fumosorosea y liberación de Tamarixia radiata.','Si la autoridad indica mantenerlo en producción: nutrición foliar con zinc, manganeso y boro para alargar su vida productiva.',ETIQUETA],
+  pred:{dias:[90,60,30], avance:'el moteado se extiende a más ramas y el psílido puede contagiar a los árboles vecinos', perdida:'Pérdida de 30–100 % de la producción en 2–5 años; el árbol infectado no se recupera'},
+  keys:{hojas_amarillas:5, frutos_deformes:4, fruto_caido:2, insectos_pequenos:2, melaza:1}, vis:{amarillo:3}
+},
+{
+  id:'psilido', nombre:'Psílido asiático de los cítricos', alias:'diaphorina vector dragon amarillo',
+  cientifico:'Diaphorina citri', tipo:'Insecto', cultivos:['limon','naranja'], inat:'Diaphorina citri',
+  reglamentada:'Vector del HLB: su control es parte de la campaña oficial de SENASICA.', clima:'', gravedad:1,
+  sintomas:['Adultos pequeños (3–4 mm) café moteado, que se posan inclinados a 45° en brotes.','Ninfas amarillo-naranja con filamentos cerosos blancos en brotes tiernos.','Brotes torcidos, enroscados y secos.','Melaza y fumagina negra sobre hojas.'],
+  causas:['Brotaciones tiernas constantes (lluvias, podas y fertilización).','Ausencia de enemigos naturales por uso excesivo de insecticidas.','Huertos y traspatios vecinos sin control.'],
+  causaCorta:'brotaciones tiernas que atraen al psílido y falta de control regional',
+  preventivo:['Monitoreo con trampas amarillas y revisión de 10 brotes por árbol cada 15 días.','Sincronizar podas y fertilización para tener brotaciones uniformes y protegerlas.','Conservar enemigos naturales (Tamarixia radiata, catarinas, crisopas).','Eliminar limonaria (Murraya paniculata) cercana.'],
+  correctivo:['Aplicar aceite parafínico 1–1.5 % (10–15 mL por litro) dirigido a brotes tiernos.','Biológico: Cordyceps (Isaria) fumosorosea o Beauveria bassiana 1–2 g/L en horas frescas.','Solicitar liberación de Tamarixia radiata a la Junta Local / SENASICA.','Químico solo en focos y rotando modo de acción (p. ej. imidacloprid al suelo, spirotetramat), según etiqueta.',ETIQUETA],
+  pred:{dias:[30,15,7], avance:'la población se multiplica en cada brotación y aumenta el riesgo de transmitir el Dragón amarillo', perdida:'Riesgo alto de infección por HLB en todo el huerto'},
+  keys:{insectos_pequenos:4, melaza:3, hojas_enrolladas:3, hojas_amarillas:1, algodon:1}, vis:{blanco:1, negro:1, amarillo:1, puntos:1.5}
+},
+{
+  id:'mosca_blanca', nombre:'Mosca blanca', alias:'mosquita blanca algodonosa bemisia',
+  cientifico:'Aleurothrixus floccosus (cítricos); Bemisia tabaci y otras (otros cultivos)', tipo:'Insecto',
+  cultivos:['limon','naranja','otro'], inat:'Aleurothrixus floccosus', reglamentada:'', clima:'seco', gravedad:0,
+  sintomas:['Adultos blancos diminutos que vuelan al mover las hojas.','Ninfas en el envés cubiertas de cera algodonosa blanca.','Abundante melaza pegajosa y fumagina negra.','Hojas debilitadas y frutos manchados.'],
+  causas:['Exceso de nitrógeno que produce brotes suaves.','Copas muy cerradas, sin ventilación.','Hormigas que protegen a la plaga de sus enemigos naturales.','Uso de insecticidas de amplio espectro que eliminan parasitoides.'],
+  causaCorta:'exceso de follaje tierno, poca ventilación y presencia de hormigas',
+  preventivo:['Poda de aireación para abrir la copa.','Controlar hormigas con bandas pegajosas en el tronco.','Fertilización nitrogenada moderada y fraccionada.','Trampas amarillas pegajosas para monitoreo.','Conservar parasitoides (Cales noacki, Encarsia) y depredadores.'],
+  correctivo:['Lavar focos con jabón potásico 1–2 % (10–20 g/L) + aceite parafínico 1 %, cubriendo bien el envés.','Biológico: Cordyceps (Isaria) fumosorosea 1–2 g/L.','Químico solo si la infestación es alta: spirotetramat o pyriproxyfen, según etiqueta.',ETIQUETA],
+  pred:{dias:[45,25,12], avance:'la fumagina cubre hojas y frutos y reduce la fotosíntesis', perdida:'Pérdida comercial del 10–30 % por fruta manchada y árbol debilitado'},
+  keys:{moscas_blancas:6, algodon:3, melaza:4, insectos_pequenos:1}, vis:{blanco:3, negro:2, puntos:3}
+},
+{
+  id:'mosca_med', nombre:'Mosca del Mediterráneo', alias:'moscamed mosca de la fruta',
+  cientifico:'Ceratitis capitata', tipo:'Insecto', cultivos:['limon','naranja','mango'], inat:'Ceratitis capitata',
+  reglamentada:'Plaga CUARENTENARIA no establecida en México (Programa MOSCAMED). Si la sospechas, guarda frutos y larvas y avisa de inmediato a SENASICA.',
+  clima:'', gravedad:1,
+  sintomas:['Picaduras pequeñas en la cáscara con halo descolorido.','Larvas blancas dentro de la pulpa.','Pulpa podrida y caída prematura de frutos.','Adulto: mosca de 4–5 mm con alas manchadas y tórax negro con manchas plateadas.'],
+  causas:['Introducción de fruta infestada desde otras regiones.','Frutos maduros o caídos sin recolectar.','Temperaturas cálidas que aceleran su ciclo.'],
+  causaCorta:'fruta infestada introducida y frutos caídos sin recolectar',
+  preventivo:['Trampas Jackson con trimedlure (coordinadas con SENASICA).','Recolectar y destruir frutos caídos dos veces por semana.','No traer fruta de otras regiones sin certificado.','Cosechar en madurez adecuada, sin dejar fruta sobremadura en el árbol.'],
+  correctivo:['AVISAR A SENASICA de inmediato (es obligatorio).','Recolectar frutos picados y enterrarlos a más de 50 cm o encerrarlos en bolsa negra al sol.','No mover fruta fuera del predio.','Aplicar cebo selectivo con spinosad (tipo GF‑120) por parcheo, según etiqueta e indicación oficial.',ETIQUETA],
+  pred:{dias:[21,14,7], avance:'cada hembra pica cientos de frutos y el brote se extiende a huertos vecinos', perdida:'Hasta 100 % de frutos dañados y cuarentena con restricción de venta'},
+  keys:{fruto_podrido:5, fruto_caido:3, perforaciones:2}, vis:{cafe:2}
+},
+{
+  id:'anastrepha', nombre:'Mosca de la fruta (mexicana / del mango)', alias:'gusano de la fruta anastrepha ludens obliqua',
+  cientifico:'Anastrepha ludens, A. obliqua y Anastrepha spp.', tipo:'Insecto',
+  cultivos:['limon','naranja','mango','guanabana','otro'], inat:'Anastrepha',
+  reglamentada:'Plaga bajo Campaña Nacional contra Moscas de la Fruta (SENASICA).', clima:'humedo', gravedad:0,
+  sintomas:['Piquetes en la cáscara con zona blanda alrededor.','Larvas (gusanos) blancas dentro de la pulpa.','Frutos que maduran antes de tiempo, se pudren y caen.','Adulto amarillo-café con bandas en las alas.'],
+  causas:['Frutos caídos o sobremaduros que no se recolectan (sirven de criadero).','Hospederos silvestres cercanos (jobo, guayaba, zapote).','Temporada de lluvias y calor.'],
+  causaCorta:'frutos caídos sin recolectar y hospederos cercanos',
+  preventivo:['Trampas McPhail con proteína hidrolizada o levadura torula (revisar cada semana).','Recolectar y enterrar frutos caídos dos veces por semana.','Cosechar en madurez fisiológica y no dejar fruta en el árbol.','Apoyar liberaciones de mosca estéril y del parasitoide Diachasmimorpha longicaudata (SENASICA).'],
+  correctivo:['Cebo selectivo con spinosad (tipo GF‑120) en manchones de 1 m² por árbol cada 7 días, según etiqueta.','Destruir fruta infestada (enterrar a más de 50 cm o bolsa al sol).','Mango de exportación: tratamiento hidrotérmico en empacadora certificada.',ETIQUETA],
+  pred:{dias:[21,10,5], avance:'aumenta el número de frutos con larvas en cada generación (≈ 25–30 días)', perdida:'Pérdida de 30–80 % de la cosecha y rechazo en el mercado'},
+  keys:{fruto_podrido:6, fruto_caido:4, perforaciones:2}, vis:{cafe:2, negro:1}
+},
+{
+  id:'acaros', nombre:'Araña roja / ácaros tetraníquidos', alias:'acaro rojo arañita',
+  cientifico:'Tetranychus urticae, Panonychus citri; Oligonychus yothersi (café)', tipo:'Ácaro',
+  cultivos:['limon','naranja','mango','guanabana','cafe','otro'], inat:'Tetranychus urticae', reglamentada:'', clima:'seco', gravedad:0,
+  sintomas:['Puntitos amarillos o plateados en el haz de las hojas.','Telarañas finas en el envés y ácaros diminutos rojos o verdosos.','Hojas bronceadas, secas y caída de hojas.','Frutos opacos o con piel plateada/bronceada.'],
+  causas:['Clima seco y caluroso, polvo en caminos.','Estrés hídrico de la planta.','Uso de piretroides que eliminan ácaros depredadores.'],
+  causaCorta:'clima seco y caluroso con estrés hídrico',
+  preventivo:['Riego adecuado y constante en época seca.','Reducir el polvo de caminos (riego o cobertura).','No abusar de piretroides; conservar ácaros depredadores.','Revisar el envés de 10 hojas por árbol cada semana en secas.'],
+  correctivo:['Azufre humectable 80 % a 2–3 g/L (no aplicar arriba de 32 °C ni mezclar con aceite).','O aceite parafínico 1 % con buena cobertura del envés.','Biológico: ácaros depredadores (Phytoseiulus persimilis, Neoseiulus californicus).','Acaricida específico (p. ej. abamectina) solo en focos y según etiqueta.',ETIQUETA],
+  pred:{dias:[30,15,7], avance:'en clima seco la población se duplica en pocos días y provoca defoliación', perdida:'Pérdida del 10–40 % por frutos bronceados y árboles defoliados'},
+  keys:{telaranas:6, hojas_amarillas:2, cicatrices_fruto:1}, vis:{amarillo:2, rojizo:2, plateado:2}
+},
+{
+  id:'minador', nombre:'Minador de la hoja de los cítricos', alias:'minador minadora',
+  cientifico:'Phyllocnistis citrella (cítricos); Liriomyza spp. (otros cultivos)', tipo:'Insecto',
+  cultivos:['limon','naranja','otro'], inat:'Phyllocnistis citrella', reglamentada:'', clima:'', gravedad:0,
+  sintomas:['Galerías plateadas serpenteantes en hojas tiernas.','Hojas nuevas enrolladas y deformadas.','Larva visible dentro de la galería.'],
+  causas:['Brotaciones tiernas fuera de temporada.','Viveros y árboles jóvenes con brotación continua.'],
+  causaCorta:'brotaciones tiernas continuas',
+  preventivo:['Sincronizar poda y fertilización para concentrar las brotaciones.','Evitar brotes fuera de temporada en árboles adultos.','Trampas de feromona para monitoreo.','Conservar el parasitoide Ageniaspis citricola.'],
+  correctivo:['Aceite parafínico 0.5–1 % sobre brotes nuevos cada 7–10 días durante la brotación.','En plantas jóvenes, quitar brotes muy dañados.','Químico (p. ej. abamectina + aceite) solo en viveros o árboles jóvenes, según etiqueta.',ETIQUETA],
+  pred:{dias:[30,20,10], avance:'las heridas de las galerías favorecen la entrada de cancro bacteriano', perdida:'Daño grave en viveros y árboles jóvenes; en adultos reduce el crecimiento'},
+  keys:{galerias:7, hojas_enrolladas:3}, vis:{plateado:3}
+},
+{
+  id:'piojo_rojo', nombre:'Piojo rojo de California', alias:'escama roja',
+  cientifico:'Aonidiella aurantii', tipo:'Insecto', cultivos:['limon','naranja'], inat:'Aonidiella aurantii', reglamentada:'', clima:'seco', gravedad:0,
+  sintomas:['Escamas circulares rojizas de 1–2 mm en frutos, hojas y ramas.','Manchas amarillas en hojas alrededor de las escamas.','Ramas secas en infestaciones fuertes.'],
+  causas:['Copas densas sin ventilación.','Polvo y clima seco.','Falta de enemigos naturales.'],
+  causaCorta:'copas densas y falta de enemigos naturales',
+  preventivo:['Poda de aireación e iluminación de la copa.','Revisar frutos y ramas cada mes.','Conservar el parasitoide Aphytis melinus y catarinas Chilocorus.'],
+  correctivo:['Aceite parafínico 1–1.5 % con mojado completo (incluido el interior de la copa) cuando haya ninfas móviles.','Podar y sacar del huerto ramas muy infestadas.','Químico (p. ej. pyriproxyfen) según etiqueta, solo si hay alta infestación.',ETIQUETA],
+  pred:{dias:[60,30,15], avance:'las escamas cubren frutos y secan ramas', perdida:'Frutos con escamas pierden valor comercial (10–30 %)'},
+  keys:{escamas:7, hojas_amarillas:1}, vis:{rojizo:2, cafe:1, puntos:1}
+},
+{
+  id:'cotonet', nombre:'Cotonet / Cochinilla algodonosa', alias:'piojo harinoso cochinilla harinosa',
+  cientifico:'Planococcus citri y otras cochinillas (Pseudococcidae)', tipo:'Insecto',
+  cultivos:['limon','naranja','mango','guanabana','cacao','otro'], inat:'Planococcus citri', reglamentada:'', clima:'', gravedad:0,
+  sintomas:['Masas blancas algodonosas en axilas, frutos, pedúnculos y ramas.','Melaza pegajosa y fumagina negra.','Caída de frutos pequeños y deformación.'],
+  causas:['Hormigas que cuidan y dispersan a las cochinillas.','Exceso de nitrógeno.','Copas cerradas y húmedas.'],
+  causaCorta:'presencia de hormigas que la protegen y copas muy cerradas',
+  preventivo:['Bandas pegajosas en el tronco para cortar el paso a las hormigas.','Poda de aireación.','Fertilización equilibrada.','Conservar catarinas (Cryptolaemus montrouzieri) y crisopas.'],
+  correctivo:['Quitar o cepillar las masas visibles en los focos.','Jabón potásico 1–2 % + aceite parafínico 1 % dirigido a los focos.','Biológico: liberación de Cryptolaemus montrouzieri.','Químico (p. ej. spirotetramat) según etiqueta, solo si la infestación es alta.',ETIQUETA],
+  pred:{dias:[45,25,12], avance:'se extiende a frutos y aparece fumagina', perdida:'Pérdida del 10–30 % por frutos manchados o caídos'},
+  keys:{algodon:6, melaza:3, hormigas:2, fruto_caido:1}, vis:{blanco:3, negro:1, puntos:2.5}
+},
+{
+  id:'pulgon', nombre:'Pulgón', alias:'afido afidos pulgon negro',
+  cientifico:'Aphis gossypii, Toxoptera aurantii y otros áfidos', tipo:'Insecto',
+  cultivos:['limon','naranja','cacao','mango','otro'], inat:'Aphis gossypii', reglamentada:'', clima:'', gravedad:0,
+  sintomas:['Colonias de insectos pequeños verdes o negros en brotes tiernos.','Hojas nuevas enroscadas y deformes.','Melaza, fumagina y muchas hormigas.'],
+  causas:['Brotes tiernos abundantes por exceso de nitrógeno.','Hormigas que los protegen.','Clima templado entre lluvias.'],
+  causaCorta:'brotes tiernos abundantes y hormigas que lo protegen',
+  preventivo:['Fertilización nitrogenada moderada.','Controlar hormigas.','Conservar catarinas, crisopas y sírfidos.','Revisar brotes cada semana.'],
+  correctivo:['Jabón potásico 1–2 % sobre las colonias.','Extracto de neem (azadiractina) según etiqueta.','Químico selectivo (p. ej. flonicamid) solo en focos, según etiqueta.',ETIQUETA],
+  pred:{dias:[20,10,5], avance:'se multiplica muy rápido y en cítricos puede transmitir el virus de la tristeza', perdida:'Brotes perdidos y menor floración (10–25 %)'},
+  keys:{hojas_enrolladas:5, insectos_pequenos:3, melaza:3, hormigas:2}, vis:{negro:1, amarillo:1}
+},
+{
+  id:'trips', nombre:'Trips', alias:'thrips',
+  cientifico:'Scirtothrips spp., Frankliniella spp., Selenothrips rubrocinctus', tipo:'Insecto',
+  cultivos:['limon','naranja','mango','guanabana','cacao','otro'], inat:'Thysanoptera', reglamentada:'', clima:'seco', gravedad:0,
+  sintomas:['Raspaduras plateadas o cafés en frutos y hojas.','Flores dañadas y caída de frutos recién amarrados.','Insectos alargados muy pequeños (1–2 mm) en flores y brotes.'],
+  causas:['Clima seco y caluroso durante la floración.','Maleza en floración que sirve de refugio.'],
+  causaCorta:'clima seco durante la floración y maleza hospedera',
+  preventivo:['Trampas azules o amarillas pegajosas en floración.','Manejo de maleza en floración alrededor del huerto.','Riego adecuado en secas.','Conservar chinches depredadoras (Orius).'],
+  correctivo:['Aplicar en floración solo si se rebasa el umbral: spinosad o extracto de neem según etiqueta.','Jabón potásico 1 % en focos pequeños.','Aplicar en horas frescas, evitando dañar a las abejas.',ETIQUETA],
+  pred:{dias:[21,12,6], avance:'daña la floración y deja cicatrices en los frutos', perdida:'Pérdida comercial del 10–40 % por fruta cicatrizada'},
+  keys:{cicatrices_fruto:5, flores_danadas:3, insectos_pequenos:2, hojas_enrolladas:1}, vis:{plateado:3, cafe:1}
+},
+{
+  id:'prays', nombre:'Polilla del limonero (polilla de la flor)', alias:'prays',
+  cientifico:'Prays citri', tipo:'Insecto', cultivos:['limon','naranja'], inat:'Prays citri', reglamentada:'', clima:'', gravedad:0,
+  sintomas:['Flores y botones perforados, con hilos de seda y excrementos.','Caída de flores y frutos recién amarrados.','Pequeñas orugas verdosas dentro de las flores.'],
+  causas:['Floraciones continuas (muy común en limón).','Falta de monitoreo en floración.'],
+  causaCorta:'floraciones continuas sin monitoreo',
+  preventivo:['Trampas de feromona para detectar vuelos.','Revisar 50 flores por hectárea cada semana en floración.','Conservar parasitoides naturales.'],
+  correctivo:['Bacillus thuringiensis var. kurstaki 1–2 g/L al inicio de la floración, repetir a los 7–10 días.','Spinosad según etiqueta si hay daño alto.',ETIQUETA],
+  pred:{dias:[20,10,6], avance:'destruye las flores de cada floración', perdida:'Pérdida de 20–50 % del amarre de fruto'},
+  keys:{flores_danadas:6, fruto_caido:3, perforaciones:2}, vis:{cafe:1}
+},
+{
+  id:'gomosis', nombre:'Gomosis / pudrición de raíz', alias:'phytophthora gomosis',
+  cientifico:'Phytophthora spp.', tipo:'Oomiceto', cultivos:['limon','naranja','otro'], inat:'Phytophthora', reglamentada:'', clima:'humedo', gravedad:1,
+  sintomas:['Goma ámbar que escurre de la base del tronco.','Corteza agrietada y madera café debajo.','Hojas amarillas y árbol decaído.'],
+  causas:['Encharcamiento y suelos mal drenados.','Riego que moja el tronco.','Heridas en la base del tronco y injerto muy bajo.'],
+  causaCorta:'encharcamiento y suelos con mal drenaje',
+  preventivo:['Mejorar el drenaje y hacer camellones.','No dejar que el agua toque el tronco.','Usar portainjertos tolerantes e injertar alto.','Encalar (pintar) el tronco con pasta bordelesa.'],
+  correctivo:['Raspar la corteza dañada hasta tejido sano y aplicar pasta bordelesa o fungicida cúprico.','Fosetil‑Al o metalaxil según etiqueta.','Mejorar el drenaje de inmediato.',ETIQUETA],
+  pred:{dias:[60,30,15], avance:'la lesión rodea el tronco y el árbol se seca', perdida:'Puede matar el árbol en 1–2 temporadas'},
+  keys:{goma_tronco:7, hojas_amarillas:2}, vis:{cafe:2, amarillo:1}
+},
+/* ---------------- MANGO / GENERALES ---------------- */
+{
+  id:'antracnosis', nombre:'Antracnosis', alias:'mancha negra pudricion',
+  cientifico:'Colletotrichum gloeosporioides', tipo:'Hongo',
+  cultivos:['mango','guanabana','limon','naranja','cacao','otro'], inat:'Colletotrichum gloeosporioides', reglamentada:'', clima:'humedo', gravedad:0,
+  sintomas:['Manchas negras o cafés hundidas en hojas, flores y frutos.','Flores ennegrecidas (“tizón de la flor”) y caída de frutos pequeños.','Manchas negras que crecen en el fruto al madurar.'],
+  causas:['Lluvias y alta humedad durante floración y llenado de fruto.','Ramas secas y frutos momificados que guardan el hongo.','Copas cerradas sin ventilación.'],
+  causaCorta:'alta humedad y lluvias en floración',
+  preventivo:['Poda de aireación y eliminación de ramas secas y frutos momificados.','Buen drenaje; evitar mojar el follaje.','Aplicaciones preventivas de cobre antes de las lluvias en floración.'],
+  correctivo:['Retirar y destruir hojas, flores y frutos enfermos.','Oxicloruro de cobre 2.5–3 g/L o mancozeb 2–2.5 g/L cada 7–14 días con lluvias, alternando con azoxistrobina según etiqueta.','Mango: tratamiento poscosecha con agua caliente (≈ 52 °C por 5 min).',ETIQUETA],
+  pred:{dias:[21,10,5], avance:'con lluvias la mancha se extiende a todas las flores y frutos', perdida:'Pérdida de 30–60 % de la cosecha en floraciones lluviosas'},
+  keys:{manchas_negras:6, flores_danadas:3, fruto_podrido:2, fruto_caido:2}, vis:{negro:3, cafe:3}
+},
+{
+  id:'escama_mango', nombre:'Escama blanca del mango', alias:'escama',
+  cientifico:'Aulacaspis tubercularis', tipo:'Insecto', cultivos:['mango','guanabana','otro'], inat:'Aulacaspis tubercularis', reglamentada:'', clima:'seco', gravedad:0,
+  sintomas:['Escamas blancas alargadas en hojas, ramas y frutos.','Manchas rosadas o amarillas alrededor de las escamas en el fruto.','Hojas amarillas y debilitamiento.'],
+  causas:['Copas densas y poco iluminadas.','Material vegetativo infestado.','Falta de enemigos naturales.'],
+  causaCorta:'copas densas y falta de enemigos naturales',
+  preventivo:['Poda de aireación.','Usar varetas e injertos limpios.','Conservar catarinas Chilocorus y parasitoides Aphytis.'],
+  correctivo:['Aceite parafínico 1–1.5 % con buena cobertura.','Podar y sacar ramas muy infestadas.','Químico según etiqueta solo en alta infestación.',ETIQUETA],
+  pred:{dias:[60,30,15], avance:'las escamas cubren el fruto y lo manchan', perdida:'Fruta rechazada para exportación (10–30 %)'},
+  keys:{escamas:6, hojas_amarillas:1}, vis:{blanco:2, amarillo:1, puntos:2.5}
+},
+{
+  id:'cenicilla', nombre:'Cenicilla (oídio)', alias:'oidio polvo blanco',
+  cientifico:'Oidium mangiferae y otros Erysiphales', tipo:'Hongo', cultivos:['mango','otro'], inat:'Erysiphaceae', reglamentada:'', clima:'seco', gravedad:0,
+  sintomas:['Polvo blanco harinoso sobre flores, hojas tiernas y frutos pequeños.','Flores secas y caída de frutos recién amarrados.'],
+  causas:['Noches frescas con rocío y días secos en floración.','Copas densas.'],
+  causaCorta:'noches frescas con rocío y días secos en floración',
+  preventivo:['Poda de aireación.','Monitorear panículas al inicio de la floración.','Azufre preventivo al iniciar la floración.'],
+  correctivo:['Azufre humectable 2–3 g/L (no arriba de 32 °C).','Bicarbonato de potasio 5 g/L en focos.','Fungicida sistémico según etiqueta si la infección es alta.',ETIQUETA],
+  pred:{dias:[15,8,4], avance:'cubre toda la floración', perdida:'Pérdida de 20–80 % del amarre de fruto'},
+  keys:{polvo_blanco_hoja:7, flores_danadas:3}, vis:{blanco:3}
+},
+{
+  id:'fumagina', nombre:'Fumagina (hollín negro)', alias:'negrilla',
+  cientifico:'Capnodium spp.', tipo:'Hongo', cultivos:['limon','naranja','mango','guanabana','cacao','cafe','otro'], inat:'Capnodium', reglamentada:'', clima:'humedo', gravedad:0,
+  sintomas:['Capa negra como hollín sobre hojas, ramas y frutos.','Se desprende al frotar.','Siempre acompañada de melaza de insectos chupadores.'],
+  causas:['Melaza producida por mosca blanca, pulgón, cochinilla (en café, Coccus viridis) o psílido.','Humedad alta.'],
+  causaCorta:'la melaza de insectos chupadores y la humedad',
+  preventivo:['Controlar a los insectos que producen melaza.','Controlar hormigas.','Poda de aireación.'],
+  correctivo:['Identificar y controlar el insecto chupador (revisa mosca blanca, pulgón y cochinilla).','Lavar con jabón potásico 1–2 % para desprender el hollín.',ETIQUETA],
+  pred:{dias:[45,25,12], avance:'cubre las hojas y reduce la fotosíntesis', perdida:'Fruta manchada y árbol debilitado (5–20 %)'},
+  keys:{melaza:5}, vis:{negro:4}
+},
+/* ---------------- GUANÁBANA ---------------- */
+{
+  id:'cerconota', nombre:'Barrenador del fruto de la guanábana', alias:'gusano del fruto barrenador',
+  cientifico:'Cerconota anonella', tipo:'Insecto', cultivos:['guanabana','otro'], inat:'Cerconota anonella', reglamentada:'', clima:'humedo', gravedad:1,
+  sintomas:['Orificios en el fruto con excremento (aserrín) café.','Manchas negras y pudrición alrededor del orificio.','Larvas rosadas dentro de la pulpa; frutos caídos.'],
+  causas:['Frutos sin protección (sin embolsar).','Frutos dañados dejados en el árbol o en el suelo.','Huertos vecinos de anonáceas sin manejo.'],
+  causaCorta:'frutos sin embolsar y frutos dañados sin recolectar',
+  preventivo:['EMBOLSAR los frutos cuando miden 3–5 cm (bolsa de papel encerado o polietileno perforado).','Recolectar y destruir frutos dañados y caídos cada semana.','Poda para facilitar la revisión de frutos.'],
+  correctivo:['Cortar y enterrar YA los frutos perforados (más de 50 cm).','Bacillus thuringiensis var. kurstaki 1–2 g/L dirigido a frutos pequeños, cada 7–10 días.','Spinosad según etiqueta en focos.',ETIQUETA],
+  pred:{dias:[30,15,7], avance:'cada generación barrena más frutos', perdida:'Pérdida de 30–70 % de frutos'},
+  keys:{perforaciones:6, fruto_podrido:4, fruto_caido:2, manchas_negras:1}, vis:{cafe:2, negro:2}
+},
+{
+  id:'chinche_guanabana', nombre:'Chinches de la guanábana', alias:'chinche patas de hoja',
+  cientifico:'Leptoglossus zonatus y otras chinches (Coreidae, Pentatomidae)', tipo:'Insecto',
+  cultivos:['guanabana','mango','otro'], inat:'Leptoglossus zonatus', reglamentada:'', clima:'', gravedad:0,
+  sintomas:['Chinches visibles en frutos y brotes.','Piquetes que dejan manchas oscuras y endurecidas en el fruto.','Frutos deformes o caídos.'],
+  causas:['Maleza hospedera cercana.','Frutos sin protección.'],
+  causaCorta:'maleza hospedera cercana y frutos sin protección',
+  preventivo:['Manejo de maleza alrededor del huerto.','Embolsado de frutos.','Revisión semanal de frutos.'],
+  correctivo:['Recolección manual temprano en la mañana.','Biológico: Beauveria bassiana 1–2 g/L.','Insecticida de contacto según etiqueta solo en focos.',ETIQUETA],
+  pred:{dias:[30,15,8], avance:'aumentan los frutos deformes', perdida:'Pérdida de 10–30 %'},
+  keys:{chinches:6, frutos_deformes:3, manchas_negras:1}, vis:{negro:1, cafe:1}
+},
+/* ---------------- CACAO ---------------- */
+{
+  id:'monilia', nombre:'Monilia / Moniliasis del cacao', alias:'moniliasis pudricion helada',
+  cientifico:'Moniliophthora roreri', tipo:'Hongo', cultivos:['cacao'], inat:'Moniliophthora roreri',
+  reglamentada:'Enfermedad presente en el sureste de México; su manejo es obligatorio para conservar la producción.', clima:'humedo', gravedad:1,
+  sintomas:['Gibas o abultamientos en mazorcas jóvenes.','Mancha café irregular que crece rápido.','Polvo blanco-crema (esporas) sobre la mancha.','Mazorcas momificadas en el árbol.'],
+  causas:['Alta humedad y lluvias.','Exceso de sombra y poca ventilación.','Mazorcas enfermas que no se retiran (liberan millones de esporas).'],
+  causaCorta:'alta humedad, exceso de sombra y mazorcas enfermas sin retirar',
+  preventivo:['Cosecha sanitaria SEMANAL: retirar toda mazorca con síntomas antes de que forme el polvo blanco.','Poda de mantenimiento y regulación de sombra (30–50 %).','Buen drenaje.','Trichoderma y cobre preventivo en mazorcas de 1–3 meses.'],
+  correctivo:['Retirar YA todas las mazorcas enfermas y momificadas.','Dejarlas en el suelo cubiertas con hojarasca o en bolsa cerrada; NUNCA dejarlas colgando.','Oxicloruro de cobre 2.5–3 g/L sobre mazorcas pequeñas cada 15 días en lluvias.','Biológico: Trichoderma spp. o Bacillus subtilis según etiqueta.',ETIQUETA],
+  pred:{dias:[21,14,7], avance:'las esporas infectan las mazorcas nuevas de todo el cacaotal', perdida:'Pérdida de 40–80 % de mazorcas, hasta 100 % sin manejo'},
+  keys:{mazorca_mancha:8, fruto_podrido:3, frutos_deformes:2}, vis:{cafe:3, blanco:2}
+},
+{
+  id:'mazorca_negra', nombre:'Mazorca negra', alias:'phytophthora cacao pudricion negra',
+  cientifico:'Phytophthora palmivora', tipo:'Oomiceto', cultivos:['cacao'], inat:'Phytophthora palmivora', reglamentada:'', clima:'humedo', gravedad:1,
+  sintomas:['Mancha café-oscura a negra que cubre toda la mazorca en pocos días.','Moho blanco fino sobre la mancha con humedad.','Granos podridos.'],
+  causas:['Lluvias intensas y salpicadura del suelo.','Exceso de sombra y humedad.','Mazorcas enfermas dejadas en la planta.'],
+  causaCorta:'lluvias intensas y humedad',
+  preventivo:['Cosecha sanitaria semanal.','Regulación de sombra y drenaje.','Cobertura del suelo para evitar salpicaduras.'],
+  correctivo:['Retirar y enterrar las mazorcas enfermas.','Cobre 2.5–3 g/L o metalaxil + cobre según etiqueta en mazorcas jóvenes.',ETIQUETA],
+  pred:{dias:[14,7,4], avance:'se extiende rápido con las lluvias', perdida:'Pérdida de 20–50 % de mazorcas'},
+  keys:{mazorca_negra:8, manchas_negras:3, fruto_podrido:2}, vis:{negro:3, cafe:2}
+},
+{
+  id:'escoba_bruja', nombre:'Escoba de bruja del cacao', alias:'escoba',
+  cientifico:'Moniliophthora perniciosa', tipo:'Hongo', cultivos:['cacao'], inat:'Moniliophthora perniciosa',
+  reglamentada:'Considerada AUSENTE en México (plaga cuarentenaria). Si la sospechas, toma fotos, no muevas material y avisa de inmediato a SENASICA.',
+  clima:'humedo', gravedad:1,
+  sintomas:['Brotes hinchados con muchas ramitas en forma de escoba.','Cojines florales deformes.','Mazorcas con manchas negras duras y deformes.'],
+  causas:['Material vegetativo introducido sin control sanitario.','Alta humedad.'],
+  causaCorta:'material vegetativo sin control sanitario y alta humedad',
+  preventivo:['Usar solo varetas y plantas de origen certificado.','No introducir material de cacao de otros países.','Inspección mensual de brotes.'],
+  correctivo:['Avisar a SENASICA antes de cualquier acción.','Cortar las escobas 15–20 cm debajo del tejido dañado y destruirlas en el sitio según indicación oficial.',ETIQUETA],
+  pred:{dias:[30,20,10], avance:'las escobas secas liberan esporas a todo el cacaotal', perdida:'Pérdida de 50–90 % en pocos años'},
+  keys:{brotes_escoba:8, frutos_deformes:2, mazorca_mancha:1}, vis:{cafe:1, negro:1}
+},
+{
+  id:'chinche_cacao', nombre:'Chinche del cacao', alias:'monalonion mosquilla',
+  cientifico:'Monalonion spp.', tipo:'Insecto', cultivos:['cacao'], inat:'Monalonion', reglamentada:'', clima:'humedo', gravedad:0,
+  sintomas:['Lesiones negras circulares en mazorcas y brotes.','Mazorcas jóvenes que se secan (“chireles”).','Chinches pequeñas en brotes y mazorcas.'],
+  causas:['Exceso de sombra y humedad.','Hospederos cercanos.'],
+  causaCorta:'exceso de sombra y humedad',
+  preventivo:['Regular la sombra.','Inspección semanal de mazorcas.','Conservar hormigas depredadoras y arañas.'],
+  correctivo:['Retirar mazorcas dañadas.','Beauveria bassiana 1–2 g/L.','Insecticida según etiqueta solo en focos.',ETIQUETA],
+  pred:{dias:[30,15,8], avance:'aumenta el secado de mazorcas jóvenes', perdida:'Pérdida de 10–40 %'},
+  keys:{chinches:5, manchas_negras:4, frutos_deformes:2}, vis:{negro:2}
+},
+{
+  id:'barrenador_cacao', nombre:'Barrenador del cacao', alias:'barrenador mazorca tallo',
+  cientifico:'Carmenta theobromae (mazorca); Xyleborus spp. (tallo)', tipo:'Insecto', cultivos:['cacao','otro'], inat:'Carmenta theobromae', reglamentada:'', clima:'', gravedad:0,
+  sintomas:['Orificios en mazorcas o tallos con aserrín.','Granos dañados dentro de la mazorca.','Ramas que se secan.'],
+  causas:['Mazorcas sobremaduras sin cosechar.','Árboles débiles o con heridas.'],
+  causaCorta:'mazorcas sobremaduras y árboles debilitados',
+  preventivo:['Cosecha oportuna.','Poda y cicatrizado de heridas.','Nutrición adecuada.'],
+  correctivo:['Eliminar mazorcas y ramas barrenadas.','Beauveria bassiana 1–2 g/L.','Pasta cicatrizante en cortes.',ETIQUETA],
+  pred:{dias:[45,25,12], avance:'aumenta el número de mazorcas y ramas barrenadas', perdida:'Pérdida de 10–30 %'},
+  keys:{perforaciones:6, fruto_podrido:2}, vis:{cafe:2}
+},
+{
+  id:'mal_machete', nombre:'Mal del machete', alias:'ceratocystis muerte subita marchitez machete',
+  cientifico:'Ceratocystis cacaofunesta (antes C. fimbriata)', tipo:'Hongo', cultivos:['cacao'], inat:'Ceratocystis', reglamentada:'', clima:'humedo', gravedad:1,
+  sintomas:['Marchitez repentina de la planta o de una rama.','Hojas secas que quedan pegadas a las ramas.','Madera con manchas o rayas café-rojizas al cortar.','Perforaciones con aserrín de Xyleborus en tronco y ramas.'],
+  causas:['Heridas de machete, poda o herramientas sin desinfectar.','Escarabajos Xyleborus que transportan el hongo.','Humedad alta.'],
+  causaCorta:'heridas de herramientas sin desinfectar y escarabajos Xyleborus',
+  preventivo:['Desinfectar machetes y tijeras entre planta y planta (cloro al 2–5 % o alcohol).','Evitar heridas en tronco y raíces; sellar cortes de poda con pasta cicatrizante.','Controlar Xyleborus y retirar madera enferma del cacaotal.'],
+  correctivo:['Eliminar y sacar del cacaotal las plantas o ramas muertas; quemarlas o enterrarlas.','Cortar ramas enfermas por debajo del tejido manchado y proteger el corte con pasta cúprica.','Aplicar cobre en heridas y cortes según etiqueta.',ETIQUETA],
+  pred:{dias:[45,25,12], avance:'la infección avanza por el sistema vascular y mata la planta', perdida:'Muerte de plantas completas; se dispersa con las herramientas'},
+  keys:{marchitez:8, perforaciones:3}, vis:{cafe:2, negro:1}
+},
+{
+  id:'broca', nombre:'Broca del café', alias:'broca cafe barrenador de la cereza',
+  cientifico:'Hypothenemus hampei', tipo:'Insecto', cultivos:['cafe'], inat:'Hypothenemus hampei',
+  reglamentada:'Plaga atendida por la Campaña contra Plagas Reglamentadas del Cafeto (SENASICA).', clima:'humedo', gravedad:1,
+  sintomas:['Orificio pequeño en la punta (corona) de la cereza.','Escarabajo negro de unos 1.5 mm dentro del fruto.','Grano perforado que pierde peso y calidad.','Caída de frutos brocados.'],
+  causas:['Frutos caídos y frutos que quedan en la planta después de la cosecha (refugio de la broca).','Temperaturas mayores de 22 °C y humedad relativa mayor de 70 %.','Cafetales con manejo deficiente.'],
+  causaCorta:'frutos caídos o remanentes que sirven de refugio a la broca',
+  preventivo:['Re-Re: recolectar frutos caídos y repasar los que quedan en la planta al terminar la cosecha.','Trampas con atrayente alcohólico (metanol-etanol) para monitorear vuelos.','Podas sanitarias y manejo de sombra y maleza.','Conservar enemigos naturales (parasitoides y depredadores).'],
+  correctivo:['Recolectar y destruir YA los frutos brocados (no dejarlos en el suelo).','Biológico: Beauveria bassiana en la época de vuelo de la broca, según etiqueta.','Químico solo con insecticida autorizado y si se rebasa el umbral técnico (aprox. 5 % de frutos brocados).',ETIQUETA],
+  pred:{dias:[30,20,10], avance:'completa su ciclo en 27–30 días y cada hembra puede infestar hasta 50 granos', perdida:'Pérdidas de 20–40 % de la producción anual'},
+  keys:{orificio_cereza:8, perforaciones:4, fruto_caido:2, frutos_deformes:1}, vis:{negro:1, cafe:1}
+},
+{
+  id:'roya_cafe', nombre:'Roya del café', alias:'roya anaranjada cafe hemileia',
+  cientifico:'Hemileia vastatrix', tipo:'Hongo', cultivos:['cafe'], inat:'Hemileia vastatrix',
+  reglamentada:'Enfermedad atendida por la Campaña contra Plagas Reglamentadas del Cafeto (SENASICA).', clima:'humedo', gravedad:1,
+  sintomas:['Manchas amarillas en el haz de la hoja.','Polvillo anaranjado (esporas) en el envés.','Caída de hojas y ramas que se secan.'],
+  causas:['Lluvias y humedad alta con temperaturas templadas.','Variedades susceptibles.','Plantas mal nutridas, exceso o falta de sombra.'],
+  causaCorta:'lluvias, humedad alta y variedades susceptibles',
+  preventivo:['Sembrar variedades tolerantes (por ejemplo Oro Azteca o Costa Rica 95).','Regular la sombra, podar y nutrir bien el cafetal.','Aplicar cobre preventivo antes y durante las lluvias.','Revisar 10 hojas por planta en varios puntos del cafetal cada mes.'],
+  correctivo:['Oxicloruro de cobre 2.5–3 g/L como protector en focos.','Fungicida sistémico autorizado (triazol) según etiqueta cuando la incidencia es alta.','Retirar hojas muy afectadas en plantas jóvenes.',ETIQUETA],
+  pred:{dias:[30,20,10], avance:'la defoliación debilita la planta y reduce la cosecha del año siguiente', perdida:'Pérdidas de 30–50 % en epidemias'},
+  keys:{pustulas:8, hojas_amarillas:3}, vis:{rojizo:3, amarillo:2}
+},
+{
+  id:'cochinilla_verde', nombre:'Cochinilla verde del café', alias:'escama verde cochinilla cafe',
+  cientifico:'Coccus viridis', tipo:'Insecto', cultivos:['cafe','limon','naranja','otro'], inat:'Coccus viridis', reglamentada:'', clima:'seco', gravedad:0,
+  sintomas:['Escamas verdes, planas y ovaladas en el envés de las hojas y en brotes tiernos.','Melaza y fumagina negra sobre hojas y frutos.','Muchas hormigas cuidando a las cochinillas.','Brotes tiernos débiles o secos.'],
+  causas:['Hormigas que las protegen de sus enemigos naturales.','Periodos secos.','Uso de insecticidas de amplio espectro.'],
+  causaCorta:'hormigas que la protegen y periodos secos',
+  preventivo:['Controlar hormigas con barreras pegajosas en el tallo.','Conservar el hongo Lecanicillium (Verticillium) lecanii y catarinas.','Revisar brotes tiernos cada semana en época seca.'],
+  correctivo:['Jabón potásico 1–2 % + aceite parafínico 1 % dirigido a los focos.','Biológico: Lecanicillium lecanii según etiqueta.','Químico solo en focos y según etiqueta.',ETIQUETA],
+  pred:{dias:[45,25,12], avance:'aparece fumagina que reduce la fotosíntesis', perdida:'Plantas debilitadas y menor producción (10–20 %)'},
+  keys:{escamas:6, melaza:4, hormigas:3, algodon:1}, vis:{negro:2, puntos:1}
+},
+{
+  id:'minador_cafe', nombre:'Minador de la hoja del café', alias:'minador cafe leucoptera',
+  cientifico:'Leucoptera coffeella', tipo:'Insecto', cultivos:['cafe'], inat:'Leucoptera coffeella', reglamentada:'', clima:'seco', gravedad:0,
+  sintomas:['Manchas cafés irregulares en el haz que se desprenden como papel (minas).','Larvas pequeñas dentro de la mina.','Caída de hojas en ataques fuertes.'],
+  causas:['Temperaturas mayores de 22 °C y periodos secos.','Poca sombra en el cafetal.','Eliminación de avispas depredadoras por insecticidas.'],
+  causaCorta:'calor, poca sombra y falta de enemigos naturales',
+  preventivo:['Mantener sombra regulada.','Conservar avispas depredadoras y parasitoides.','Evitar insecticidas de amplio espectro.'],
+  correctivo:['Retirar hojas muy minadas en plantas jóvenes.','Insecticida autorizado solo si se rebasa el umbral técnico, según etiqueta.',ETIQUETA],
+  pred:{dias:[30,20,10], avance:'reduce la fotosíntesis y provoca defoliación', perdida:'Pérdidas de hasta 20 % en zonas de alta incidencia'},
+  keys:{minas_cafe:8, galerias:3}, vis:{cafe:3}
+},
+{
+  id:'chamusquina', nombre:'Chinche de la chamusquina', alias:'chamusquina monalonion cafe chinche',
+  cientifico:'Monalonion velezangeli', tipo:'Insecto', cultivos:['cafe'], inat:'Monalonion velezangeli', reglamentada:'', clima:'humedo', gravedad:0,
+  sintomas:['Brotes y hojas tiernas con lesiones cafés, como quemadas.','Manchas marrones y deformación en frutos jóvenes.','Caída anticipada de frutos.'],
+  causas:['Zonas de altura con humedad alta.','Exceso de sombra.'],
+  causaCorta:'humedad alta y exceso de sombra en zonas de altura',
+  preventivo:['Regular la sombra.','Monitorear brotes tiernos cada semana.','Podar y eliminar brotes dañados.'],
+  correctivo:['Cortar y destruir brotes afectados.','Biológico: Beauveria bassiana 1–2 g/L.','Insecticida autorizado solo en focos, según etiqueta.',ETIQUETA],
+  pred:{dias:[30,15,8], avance:'aumenta la pérdida de brotes y frutos jóvenes', perdida:'Pérdida de 10–30 % de frutos'},
+  keys:{brotes_quemados:8, chinches:3, fruto_caido:2, manchas_negras:1}, vis:{cafe:2, negro:1}
+},
+/* ---------------- OTROS CULTIVOS ---------------- */
+{
+  id:'roya', nombre:'Roya', alias:'oxido',
+  cientifico:'Puccinia spp. y otros Pucciniales', tipo:'Hongo', cultivos:['otro'], inat:'Pucciniales', reglamentada:'', clima:'humedo', gravedad:0,
+  sintomas:['Pústulas anaranjadas o color óxido en el envés.','Manchas amarillas en el haz.','Defoliación.'],
+  causas:['Alta humedad y rocío prolongado.','Variedades susceptibles.'],
+  causaCorta:'alta humedad y rocío prolongado',
+  preventivo:['Variedades tolerantes.','Densidad adecuada para ventilación.','Eliminar residuos enfermos.'],
+  correctivo:['Retirar hojas muy afectadas.','Fungicida cúprico o triazol según etiqueta.',ETIQUETA],
+  pred:{dias:[21,12,6], avance:'provoca defoliación', perdida:'Pérdida de 10–50 %'},
+  keys:{pustulas:8, hojas_amarillas:2}, vis:{rojizo:4, amarillo:1}
+},
+{
+  id:'cogollero', nombre:'Gusano cogollero', alias:'spodoptera gusano',
+  cientifico:'Spodoptera frugiperda', tipo:'Insecto', cultivos:['otro'], inat:'Spodoptera frugiperda', reglamentada:'', clima:'seco', gravedad:0,
+  sintomas:['Cogollo comido con excremento húmedo.','Hojas con ventanas y perforaciones.','Larva con “Y” invertida en la cabeza.'],
+  causas:['Siembras escalonadas cercanas.','Clima cálido.'],
+  causaCorta:'clima cálido y siembras cercanas',
+  preventivo:['Monitoreo de 20 plantas por punto cada semana.','Trampas de feromona.','Conservar avispitas Trichogramma y Chelonus.'],
+  correctivo:['Bacillus thuringiensis 1–2 g/L dirigido al cogollo.','Spinosad según etiqueta si se rebasa el umbral.',ETIQUETA],
+  pred:{dias:[14,7,4], avance:'destruye el cogollo', perdida:'Pérdida de 15–60 %'},
+  keys:{hojas_cortadas:6, perforaciones:3}, vis:{cafe:1}
+},
+{
+  id:'arriera', nombre:'Hormiga arriera (cortadora)', alias:'arriera chicatana',
+  cientifico:'Atta mexicana', tipo:'Insecto', cultivos:['limon','naranja','mango','guanabana','cacao','cafe','otro'], inat:'Atta mexicana', reglamentada:'', clima:'', gravedad:0,
+  sintomas:['Hojas cortadas en media luna.','Plantas defoliadas en una noche.','Caminos de hormigas y montículos de tierra.'],
+  causas:['Nidos cercanos sin control.','Plantas jóvenes desprotegidas.'],
+  causaCorta:'nidos cercanos sin control',
+  preventivo:['Localizar nidos y vigilar caminos.','Barreras en el tronco de plantas jóvenes.'],
+  correctivo:['Cebo granulado según etiqueta, junto a los caminos activos y bocas del nido, en días sin lluvia.','No destruir el nido con agua o fuego sin controlarlo primero.',ETIQUETA],
+  pred:{dias:[10,5,2], avance:'puede defoliar plantas completas', perdida:'Plantas jóvenes perdidas'},
+  keys:{hojas_cortadas:6, hormigas:4}, vis:{}
+}
+];
+
+/* ======================== 2. UTILIDADES ======================== */
+const $ = (id) => document.getElementById(id);
+function esc(t){ return String(t == null ? '' : t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function norm(t){ return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+function ico(id, cls){ return `<svg class="ico ${cls || ''}"><use href="#${id}"/></svg>`; }
+function lsGet(k, def){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch(e){ return def; } }
+function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){ /* almacenamiento no disponible */ } }
+let toastTimer = null;
+function toast(msg, ms){
+  const t = $('toast'); t.textContent = msg; t.classList.add('ver');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('ver'), ms || 3600);
+}
+function carga(ver, txt){ $('cargaTxt').textContent = txt || 'Analizando la muestra'; $('carga').classList.toggle('ver', !!ver); }
+function lista(arr){ return '<ul>' + (arr || []).map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>'; }
+function plagaPorId(id){ return PLAGAS.find(p => p.id === id) || null; }
+function numFicha(id){ return 'N.º ' + String(PLAGAS.findIndex(p => p.id === id) + 1).padStart(2, '0'); }
+function nombreCultivo(){
+  if (!ST.cultivo) return '';
+  if (ST.cultivo === 'otro') return ($('otroCultivo').value.trim() || 'Otro cultivo');
+  return CULTIVOS[ST.cultivo].nombre;
+}
+function dos(n){ return String(n).padStart(2, '0'); }
+function fechaLarga(f){ return f.toLocaleDateString('es-MX', { weekday:'long', day:'numeric', month:'long', year:'numeric' }); }
+
+const ST = { cultivo:null, img:null, stream:null, facing:'environment', resultado:null, filtroCultivo:'todos' };
+
+/* ======================== 3. PORTADA, NAVEGACIÓN, CULTIVOS Y SÍNTOMAS ======================== */
+function renderPortada(){
+  $('ptFichas').textContent = dos(PLAGAS.length);
+  $('ptSintomas').textContent = dos(Object.keys(SINTOMAS).length);
+  $('ptCultivosN').textContent = dos(Object.keys(CULTIVOS).length - 1);
+  $('ptCultivos').innerHTML = ['limon','naranja','guanabana','mango','cacao','cafe'].map(k =>
+    `<div class="pt-cul"><b>${esc(CULTIVOS[k].nombre)}</b><i>${esc(CULTIVOS[k].latin)}</i></div>`).join('');
+}
+function ingresar(tab){ $('portada').classList.add('salir'); irTab(tab || 'diag'); }
+function verPortada(){ cerrarCamara(); cerrarModal(); $('portada').classList.remove('salir'); $('portada').scrollTop = 0; }
+
+function initTabs(){ document.querySelectorAll('.nav button[data-tab]').forEach(b => b.addEventListener('click', () => irTab(b.dataset.tab))); }
+function irTab(tab){
+  document.querySelectorAll('.nav button[data-tab]').forEach(x => x.classList.toggle('activo', x.dataset.tab === tab));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('activo', p.id === 'tab-' + tab));
+  if (tab !== 'diag') cerrarCamara();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderCultivos(){
+  $('listaCultivos').innerHTML = Object.keys(CULTIVOS).map(k =>
+    `<button class="cultivo-btn" data-c="${k}"><b>${esc(CULTIVOS[k].nombre)}</b><i>${esc(CULTIVOS[k].latin)}</i></button>`).join('');
+  document.querySelectorAll('.cultivo-btn').forEach(b => b.addEventListener('click', () => elegirCultivo(b.dataset.c)));
+}
+function elegirCultivo(c){
+  ST.cultivo = c;
+  document.querySelectorAll('.cultivo-btn').forEach(b => b.classList.toggle('sel', b.dataset.c === c));
+  $('otroCultivoBox').classList.toggle('oculto', c !== 'otro');
+  renderSintomas();
+}
+/** Muestra solo los síntomas que corresponden a las plagas del cultivo elegido */
+function renderSintomas(){
+  const previos = sintomasMarcados();
+  const keys = new Set();
+  PLAGAS.filter(p => p.cultivos.includes(ST.cultivo)).forEach(p => Object.keys(p.keys).forEach(k => keys.add(k)));
+  const orden = Object.keys(SINTOMAS).filter(k => keys.has(k));
+  $('listaSintomas').innerHTML = orden.map(k =>
+    `<label class="sint${previos.includes(k) ? ' on' : ''}"><input type="checkbox" value="${k}"${previos.includes(k) ? ' checked' : ''}><span>${esc(SINTOMAS[k])}</span></label>`).join('');
+  document.querySelectorAll('#listaSintomas input').forEach(i =>
+    i.addEventListener('change', () => i.parentElement.classList.toggle('on', i.checked)));
+}
+function sintomasMarcados(){ return Array.from(document.querySelectorAll('#listaSintomas input:checked')).map(i => i.value); }
+
+/* ======================== 4. CÁMARA Y FOTOGRAFÍA ======================== */
+function estadoVisor(modo){ // 'vacio' | 'camara' | 'foto'
+  $('visorVacio').style.display = modo === 'vacio' ? 'block' : 'none';
+  $('lienzo').style.display = modo === 'camara' ? 'block' : 'none';
+  $('imgPreview').style.display = modo === 'foto' ? 'block' : 'none';
+  $('camCtrl').style.display = modo === 'camara' ? 'grid' : 'none';
+  $('vivoPanel').style.display = modo === 'camara' ? 'block' : 'none';
+  $('fotoPie').style.display = modo === 'foto' ? 'flex' : 'none';
+}
+
+/* ---------- Detección en vivo (visión por computadora cuadro por cuadro) ---------- */
+const VIVO = { activo:false, raf:0, ultimo:0, det:null, ema:{}, cuadros:0, t0:0, fps:0, peq:null };
+function iniciarVivo(){
+  VIVO.activo = true; VIVO.ema = {}; VIVO.det = null; VIVO.ultimo = 0; VIVO.cuadros = 0; VIVO.t0 = performance.now();
+  $('vivoPlaga').textContent = 'Buscando…'; $('vivoCient').textContent = ''; $('vivoBarra').style.width = '0';
+  cancelAnimationFrame(VIVO.raf); VIVO.raf = requestAnimationFrame(bucleVivo);
+}
+function detenerVivo(){ VIVO.activo = false; cancelAnimationFrame(VIVO.raf); }
+function bucleVivo(){
+  if (!VIVO.activo) return;
+  const v = $('video'), lz = $('lienzo');
+  if (v.videoWidth && v.readyState >= 2) {
+    const esc = Math.min(1, 960 / v.videoWidth);
+    const cw = Math.round(v.videoWidth * esc), ch = Math.round(v.videoHeight * esc);
+    if (lz.width !== cw || lz.height !== ch) { lz.width = cw; lz.height = ch; }
+    const c = lz.getContext('2d');
+    c.drawImage(v, 0, 0, cw, ch);
+    const ahora = performance.now();
+    if (ahora - VIVO.ultimo >= 130) { VIVO.ultimo = ahora; try { analizarCuadro(v); } catch (e) { /* cuadro omitido */ } }
+    if (VIVO.det) dibujarVivo(c, cw, ch);
+  }
+  VIVO.raf = requestAnimationFrame(bucleVivo);
+}
+/** Analiza un cuadro del video: síntomas, zonas y plaga probable (suavizada entre cuadros) */
+function analizarCuadro(v){
+  const MAX = 240, k = Math.min(1, MAX / Math.max(v.videoWidth, v.videoHeight));
+  const w = Math.max(1, Math.round(v.videoWidth * k)), h = Math.max(1, Math.round(v.videoHeight * k));
+  if (!VIVO.peq) VIVO.peq = document.createElement('canvas');
+  const cv = VIVO.peq; if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+  const cx = cv.getContext('2d', { willReadFrequently: true });
+  cx.drawImage(v, 0, 0, w, h);
+  const r = nucleoVision(cx.getImageData(0, 0, w, h).data, w, h, false);
+  const reg = detectarRegiones(r.F, w, h);
+  let top = null, conf = 0, nivel = null, sano = false;
+  if (ST.cultivo && r.vegetacion >= 0.06) {
+    const sint = sintomasMarcados(), clima = $('selClima').value;
+    const rk = puntuar(ST.cultivo, sint, r, clima);
+    aplicarKNN(rk, ST.cultivo, r, sint);
+    rk.forEach(x => { VIVO.ema[x.p.id] = (VIVO.ema[x.p.id] || 0) * 0.65 + x.s * 0.35; });
+    const orden = rk.map(x => ({ p: x.p, s: VIVO.ema[x.p.id], coinc: x.coinc })).sort((a, b) => b.s - a.s);
+    sano = !sint.length && r.dano < 6 && r.puntos < 6;
+    if (!sano && orden[0] && orden[0].s >= 1.5) {
+      top = orden[0]; conf = confianza(top.s, orden[1] ? orden[1].s : 0);
+      nivel = calcularNivel(top.p, r, $('selExtension').value, top.coinc.length);
+    }
+  }
+  VIVO.det = { r, reg, w, h, top, conf, nivel, sano };
+  VIVO.cuadros++;
+  const dt = (performance.now() - VIVO.t0) / 1000;
+  if (dt >= 1) { VIVO.fps = VIVO.cuadros / dt; VIVO.cuadros = 0; VIVO.t0 = performance.now(); }
+  panelVivo();
+}
+function dibujarVivo(c, cw, ch){
+  const d = VIVO.det;
+  dibujarCajas(c, d.reg, cw / d.w, ch / d.h, cw);
+  // Rótulo superior con la plaga probable
+  const fs = Math.max(13, Math.round(cw / 48));
+  let txt = !ST.cultivo ? 'Elige el cultivo (paso I)' : d.r.vegetacion < 0.06 ? 'Acerca la cámara a la hoja' :
+            d.sano ? 'Sin plaga evidente' : d.top ? d.top.p.nombre + ' · ' + d.conf + ' %' : 'Sin coincidencia clara';
+  c.font = `600 ${fs}px ui-monospace, Menlo, Consolas, monospace`; c.textBaseline = 'top';
+  const tw = Math.min(cw - 16, c.measureText(txt).width + 20);
+  c.fillStyle = 'rgba(11,20,14,.82)'; c.fillRect(8, ch - fs - 26, tw, fs + 16);
+  c.fillStyle = VERDE_DET; c.fillRect(8, ch - fs - 26, 4, fs + 16);
+  c.fillStyle = '#f3eee2'; c.fillText(txt, 20, ch - fs - 18, tw - 18);
+}
+function panelVivo(){
+  const d = VIVO.det; if (!d) return;
+  $('vivoFps').textContent = VIVO.fps ? VIVO.fps.toFixed(1) + ' cuadros/s' : '— cuadros/s';
+  $('vivoDano').textContent = d.r.vegetacion >= 0.06 ? d.r.dano.toFixed(1) + ' %' : '—';
+  $('vivoPuntos').textContent = d.r.vegetacion >= 0.06 ? String(d.r.puntos) : '—';
+  let msg = '';
+  if (!ST.cultivo) { $('vivoPlaga').textContent = 'Elige el cultivo'; $('vivoCient').textContent = 'Paso I, para identificar la plaga'; $('vivoConf').textContent = '—'; $('vivoBarra').style.width = '0'; }
+  else if (d.r.vegetacion < 0.06) { $('vivoPlaga').textContent = 'Sin hoja a la vista'; $('vivoCient').textContent = ''; $('vivoConf').textContent = '—'; $('vivoBarra').style.width = '0'; msg = 'Acerca la cámara a la hoja, fruto o mazorca.'; }
+  else if (d.sano) { $('vivoPlaga').textContent = 'Sin plaga evidente'; $('vivoCient').textContent = 'Tejido sano en este cuadro'; $('vivoConf').textContent = '—'; $('vivoBarra').style.width = '0'; }
+  else if (d.top) {
+    $('vivoPlaga').textContent = d.top.p.nombre; $('vivoCient').textContent = d.top.p.cientifico + ' · nivel ' + d.nivel;
+    $('vivoConf').textContent = d.conf + ' %'; $('vivoBarra').style.width = d.conf + '%';
+    if (!sintomasMarcados().length) msg = 'Marca en el paso III lo que observas para confirmar la plaga.';
+  } else {
+    $('vivoPlaga').textContent = 'Sin coincidencia clara'; $('vivoCient').textContent = 'Los síntomas visibles no corresponden con claridad a una plaga de este cultivo';
+    $('vivoConf').textContent = '—'; $('vivoBarra').style.width = '0';
+    msg = 'Acércate más a la zona dañada o marca en el paso III lo que observas.';
+  }
+  $('vivoMsg').textContent = msg;
+}
+async function abrirCamara(){
+  ocultarAvisoCam();
+  if (!camaraEnVivoDisponible()) {
+    mostrarAvisoCam(window.isSecureContext ? 'Este navegador no permite la cámara en vivo.'
+      : 'La detección en vivo necesita abrir Horus desde su enlace https:// (esta dirección no es segura).');
+    $('inputCaptura').click();   // abre la cámara nativa del dispositivo como respaldo
+    return;
+  }
+  detenerStream();
+  try {
+    ST.stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: ST.facing }, width: { ideal: 1920 }, height: { ideal: 1080 } }, audio: false
+    });
+    const v = $('video'); v.srcObject = ST.stream;
+    estadoVisor('camara');
+    await v.play().catch(() => {});
+    iniciarVivo();
+    $('visor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } catch (e) {
+    const motivo = e && e.name === 'NotAllowedError' ? 'Se negó el permiso de cámara.' :
+                   e && e.name === 'NotFoundError' ? 'No se encontró ninguna cámara.' : 'No se pudo abrir la cámara en vivo.';
+    mostrarAvisoCam(motivo);
+  }
+}
+function mostrarAvisoCam(txt){ $('avisoCamTxt').textContent = txt + ' Puedes usar la cámara del dispositivo:'; $('avisoCam').style.display = 'grid'; }
+function ocultarAvisoCam(){ $('avisoCam').style.display = 'none'; }
+function detenerStream(){
+  detenerVivo();
+  if (ST.stream) { ST.stream.getTracks().forEach(t => t.stop()); ST.stream = null; }
+  $('video').srcObject = null;
+}
+function cerrarCamara(){ detenerStream(); estadoVisor(ST.img ? 'foto' : 'vacio'); }
+function girarCamara(){ ST.facing = ST.facing === 'environment' ? 'user' : 'environment'; abrirCamara(); }
+function capturarFoto(){
+  const v = $('video');
+  if (!v.videoWidth) { toast('La cámara aún no está lista. Espera un momento.'); return; }
+  const c = document.createElement('canvas'); c.width = v.videoWidth; c.height = v.videoHeight;
+  c.getContext('2d').drawImage(v, 0, 0);
+  detenerStream();
+  cargarImagen(c.toDataURL('image/jpeg', 0.92), 'Captura en vivo', () => analizar());
+}
+function leerArchivo(file){
+  if (!file) return;
+  if (!/^image\//.test(file.type) && !/\.(jpe?g|png|webp|gif|bmp|heic|heif)$/i.test(file.name)) { toast('El archivo seleccionado no es una imagen.'); return; }
+  const r = new FileReader();
+  r.onload = () => cargarImagen(r.result, file.name);
+  r.onerror = () => toast('No se pudo leer la imagen.');
+  r.readAsDataURL(file);
+}
+function cargarImagen(src, nombre, despues){
+  const img = new Image();
+  img.onload = () => {
+    ST.img = img; $('imgPreview').src = src; estadoVisor('foto'); ocultarAvisoCam();
+    $('pieFoto').textContent = (nombre || 'Imagen') + ' · ' + img.naturalWidth + '×' + img.naturalHeight + ' px';
+    if (typeof despues === 'function') despues();
+    else toast('Muestra lista. Marca lo que observas y presiona Analizar.');
+  };
+  img.onerror = () => toast('Formato de imagen no compatible. Usa JPG o PNG.');
+  img.src = src;
+}
+function quitarFoto(){ ST.img = null; $('imgPreview').removeAttribute('src'); estadoVisor('vacio'); }
+
+/* ======================== 5. MOTOR DE ANÁLISIS LOCAL ======================== */
+/** Colores del mapa de síntomas (coinciden con el código de color de Horus) */
+const MAPA = {
+  verde:[47,93,58], amarillo:[209,169,42], cafe:[138,46,28], rojizo:[200,60,40],
+  blanco:[90,190,200], plateado:[110,120,200], negro:[150,60,150]
+};
+const NOMBRE_CLASE = {
+  amarillo:'Amarillamiento (clorosis)', cafe:'Necrosis café', negro:'Manchas oscuras', blanco:'Masas o polvo blanco',
+  plateado:'Raspado plateado', rojizo:'Rojizo / óxido', verde:'Tejido verde sano'
+};
+const UMBRAL = { amarillo:.15, cafe:.10, negro:.10, blanco:.06, plateado:.12, rojizo:.05, puntos:10 };
+
+/**
+ * Lee la imagen en espacio HSV y genera el mapa de síntomas.
+ * 1) Clasifica cada píxel por color.
+ * 2) Delimita la planta: solo cuenta síntomas que están sobre la hoja o junto a tejido verde,
+ *    para no confundir el fondo (ropa, piel, cielo, suelo) con daño.
+ * 3) Detecta puntos y masas blancas por contraste local contra el verde que los rodea
+ *    (ninfas de mosca blanca, cochinilla, escamas), descartando reflejos grandes de luz.
+ */
+const CODIGO = { verde:1, amarillo:2, cafe:3, rojizo:4, blanco:5, plateado:6, negro:7 };
+function nucleoVision(src, w, h, conMapa){
+  const N = w * h;
+  // Códigos: 0 otro · 1 verde · 2 amarillo · 3 café · 4 rojizo · 5 blanco · 6 plateado · 7 negro · 8 gris
+  const cls = new Uint8Array(N), V = new Float32Array(N), S = new Float32Array(N);
+  for (let i = 0, p = 0; i < N; i++, p += 4) {
+    const r = src[p], g = src[p+1], b = src[p+2];
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+    const v = mx / 255, s = mx ? d / mx : 0;
+    let hh = 0;
+    if (d) {
+      if (mx === r) hh = 60 * (((g - b) / d) % 6);
+      else if (mx === g) hh = 60 * ((b - r) / d + 2);
+      else hh = 60 * ((r - g) / d + 4);
+      if (hh < 0) hh += 360;
+    }
+    V[i] = v; S[i] = s;
+    let c;
+    if (v < 0.16) c = 7;
+    else if (s < 0.14 && v > 0.80) c = 5;
+    else if (s < 0.14 && v >= 0.50) c = 6;
+    else if (s < 0.14) c = 8;
+    else if (hh >= 75 && hh <= 170 && s >= 0.18) c = 1;
+    else if (hh >= 42 && hh < 75 && s >= 0.30 && v >= 0.40) c = 2;
+    else if (hh >= 15 && hh < 42 && s >= 0.25 && v < 0.62) c = 3;
+    else if ((hh < 15 || hh >= 330) && s >= 0.40) c = 4;
+    else c = 0;
+    cls[i] = c;
+  }
+
+  // Imágenes integrales: cantidad de verde y brillo/saturación promedio del verde vecino
+  const W1 = w + 1, T = W1 * (h + 1);
+  const iG = new Float64Array(T), iV = new Float64Array(T), iS = new Float64Array(T);
+  for (let y = 0; y < h; y++) {
+    let aG = 0, aV = 0, aS = 0;
+    for (let x = 0; x < w; x++) {
+      const i = y * w + x, gv = cls[i] === 1 ? 1 : 0;
+      aG += gv; aV += gv * V[i]; aS += gv * S[i];
+      const q = (y + 1) * W1 + x + 1, u = y * W1 + x + 1;
+      iG[q] = iG[u] + aG; iV[q] = iV[u] + aV; iS[q] = iS[u] + aS;
+    }
+  }
+  const caja = (I, x, y, r) => {
+    const x0 = Math.max(0, x - r), y0 = Math.max(0, y - r), x1 = Math.min(w - 1, x + r), y1 = Math.min(h - 1, y + r);
+    return I[(y1+1)*W1 + x1+1] - I[y0*W1 + x1+1] - I[(y1+1)*W1 + x0] + I[y0*W1 + x0];
+  };
+  const area = (x, y, r) => (Math.min(w - 1, x + r) - Math.max(0, x - r) + 1) * (Math.min(h - 1, y + r) - Math.max(0, y - r) + 1);
+  const md = Math.min(w, h);
+  const rS = Math.max(4, Math.round(md * 0.035));   // vecindad corta: puntos sobre la hoja
+  const rL = Math.max(8, Math.round(md * 0.15));    // vecindad amplia: lesiones grandes junto a la hoja
+
+  // Paso 1: candidatos a punto blanco por contraste local contra el verde vecino
+  const A = new Uint8Array(N), gfS = new Float32Array(N), gfL = new Float32Array(N);
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const i = y * w + x;
+    const ng = caja(iG, x, y, rS);
+    gfS[i] = ng / area(x, y, rS);
+    gfL[i] = caja(iG, x, y, rL) / area(x, y, rL);
+    if (cls[i] !== 1 && cls[i] !== 2 && gfS[i] >= 0.55 && ng > 0) {
+      const mV = caja(iV, x, y, rS) / ng, mS = caja(iS, x, y, rS) / ng;
+      if (V[i] > mV + 0.08 && S[i] < mS * 0.8) A[i] = 1;
+    } else if (cls[i] === 1 && gfS[i] >= 0.55 && ng > 0) {
+      const mV = caja(iV, x, y, rS) / ng, mS = caja(iS, x, y, rS) / ng;
+      if (V[i] > mV + 0.12 && S[i] < mS * 0.65) A[i] = 1;
+    }
+  }
+  const iA = new Float64Array(T);
+  for (let y = 0; y < h; y++) { let a = 0; for (let x = 0; x < w; x++) { a += A[y*w + x]; iA[(y+1)*W1 + x+1] = iA[y*W1 + x+1] + a; } }
+
+  // Paso 2: clase final, solo dentro de la planta
+  const NOM = ['otro','verde','amarillo','cafe','rojizo','blanco','plateado','negro','gris'];
+  const n = { verde:0, amarillo:0, cafe:0, rojizo:0, blanco:0, plateado:0, negro:0 };
+  const o = conMapa ? new Uint8ClampedArray(N * 4) : null;
+  let fondo = 0;
+  const B = new Uint8Array(N), F = new Uint8Array(N);
+  for (let i = 0, p = 0; i < N; i++, p += 4) {
+    const x = i % w, y = (i - x) / w, c = cls[i];
+    let f = null;
+    if (A[i]) f = (caja(iA, x, y, rS) / area(x, y, rS) <= 0.45) ? 'blanco' : 'verde'; // reflejo grande = hoja sana
+    else if (c === 1) f = 'verde';
+    else if (c === 2) f = 'amarillo';
+    else if (c === 3 && gfL[i] >= 0.12) f = 'cafe';
+    else if (c === 7 && gfS[i] >= 0.5) f = 'negro';   // sombras del borde quedan fuera
+    else if ((c === 4 || c === 5 || c === 6) && gfS[i] >= 0.6) f = NOM[c];
+    else if ((c === 0 || c === 8) && gfS[i] >= 0.6) f = 'verde';   // tono intermedio dentro de la hoja
+    if (f) { n[f]++; F[i] = CODIGO[f]; } else fondo++;
+    if (f === 'blanco') B[i] = 1;
+    if (!o) continue;
+    const col = f && f !== 'verde' ? MAPA[f] : null;
+    if (col) { o[p] = col[0]; o[p+1] = col[1]; o[p+2] = col[2]; }
+    else {
+      const l = 0.3*src[p] + 0.59*src[p+1] + 0.11*src[p+2];
+      if (f === 'verde') { const t = 120 + l * 0.4; o[p] = t - 18; o[p+1] = t; o[p+2] = t - 28; }
+      else { const t = 214 + l * 0.12; o[p] = t; o[p+1] = t - 3; o[p+2] = t - 12; }
+    }
+    o[p+3] = 255;
+  }
+
+  // Conteo de puntos blancos: grupos pequeños y separados sobre la hoja
+  let puntos = 0;
+  const maxPunto = Math.max(12, Math.round(N * 0.004)), pila = [];
+  for (let i = 0; i < N; i++) {
+    if (B[i] !== 1) continue;
+    let tam = 0; B[i] = 2; pila.push(i);
+    while (pila.length) {
+      const j = pila.pop(); tam++;
+      const x = j % w;
+      const vec = [j - w, j + w, x > 0 ? j - 1 : -1, x < w - 1 ? j + 1 : -1];
+      for (const q of vec) if (q >= 0 && q < N && B[q] === 1) { B[q] = 2; pila.push(q); }
+    }
+    if (tam >= 2 && tam <= maxPunto) puntos++;
+  }
+
+  const region = (n.verde + n.amarillo + n.cafe + n.rojizo + n.blanco + n.plateado + n.negro) || 1;
+  const fr = {};
+  Object.keys(n).forEach(c => fr[c] = n[c] / region);
+  const vegetacion = region / N;
+  const dano = Math.min(100, (fr.amarillo + fr.cafe + fr.rojizo + fr.blanco + 0.5*fr.plateado + 0.5*fr.negro) * 100);
+  fr.puntos = puntos;
+  return { fr, vegetacion, dano, puntos, F, w, h, mapaDatos: o ? new ImageData(o, w, h) : null };
+}
+
+/**
+ * Agrupa los píxeles con síntomas en zonas (cuadrícula + componentes conectados)
+ * y devuelve los recuadros: la hoja principal y cada zona dañada.
+ */
+const GRUPO_DE = [null, 'v', 'amarillo', 'necrosis', 'rojizo', 'blanco', 'plateado', 'necrosis'];
+const ETIQ_ZONA = { blanco:'Puntos / masas blancas', amarillo:'Clorosis', necrosis:'Necrosis / mancha', rojizo:'Rojizo / óxido', plateado:'Raspado plateado' };
+function detectarRegiones(F, w, h){
+  const cel = Math.max(4, Math.round(Math.min(w, h) / 36));
+  const gw = Math.ceil(w / cel), gh = Math.ceil(h / cel), G = gw * gh, areaCel = cel * cel;
+  const cnt = { v: new Uint16Array(G) };
+  Object.keys(ETIQ_ZONA).forEach(g => cnt[g] = new Uint16Array(G));
+  for (let y = 0; y < h; y++) {
+    const fy = ((y / cel) | 0) * gw;
+    for (let x = 0; x < w; x++) { const c = F[y * w + x]; if (c) cnt[GRUPO_DE[c]][fy + ((x / cel) | 0)]++; }
+  }
+  const componentes = (act, salto) => {
+    const vis = new Uint8Array(G), res = [];
+    for (let i = 0; i < G; i++) {
+      if (!act[i] || vis[i]) continue;
+      let x0 = gw, y0 = gh, x1 = -1, y1 = -1; const celdas = [], pila = [i]; vis[i] = 1;
+      while (pila.length) {
+        const j = pila.pop(); celdas.push(j);
+        const cx = j % gw, cy = (j - cx) / gw;
+        if (cx < x0) x0 = cx; if (cx > x1) x1 = cx; if (cy < y0) y0 = cy; if (cy > y1) y1 = cy;
+        for (let dy = -salto; dy <= salto; dy++) for (let dx = -salto; dx <= salto; dx++) {
+          const nx = cx + dx, ny = cy + dy;
+          if (nx < 0 || ny < 0 || nx >= gw || ny >= gh) continue;
+          const q = ny * gw + nx;
+          if (act[q] && !vis[q]) { vis[q] = 1; pila.push(q); }
+        }
+      }
+      res.push({ celdas, x: x0 * cel, y: y0 * cel, w: Math.min(w, (x1 + 1) * cel) - x0 * cel, h: Math.min(h, (y1 + 1) * cel) - y0 * cel });
+    }
+    return res;
+  };
+  // Hoja principal: el grupo de tejido verde más grande
+  const actV = new Uint8Array(G);
+  for (let i = 0; i < G; i++) actV[i] = cnt.v[i] >= areaCel * 0.3 ? 1 : 0;
+  let hoja = null;
+  componentes(actV, 1).forEach(c => { if (!hoja || c.celdas.length > hoja.n) hoja = { n: c.celdas.length, x: c.x, y: c.y, w: c.w, h: c.h }; });
+  if (hoja && hoja.n < 6) hoja = null;
+  // Zonas con síntomas
+  const minPix = Math.max(6, Math.round(w * h * 0.0008)), zonas = [];
+  Object.keys(ETIQ_ZONA).forEach(g => {
+    const a = cnt[g], act = new Uint8Array(G);
+    const umbral = g === 'blanco' ? Math.max(2, areaCel * 0.04) : Math.max(2, areaCel * 0.12);
+    for (let i = 0; i < G; i++) act[i] = a[i] >= umbral ? 1 : 0;
+    componentes(act, 2).forEach(c => {
+      let px = 0; c.celdas.forEach(j => px += a[j]);
+      if (px >= minPix) zonas.push({ grupo: g, px, x: c.x, y: c.y, w: c.w, h: c.h });
+    });
+  });
+  zonas.sort((a, b) => b.px - a.px);
+  return { hoja, zonas: zonas.slice(0, 6) };
+}
+
+/** Dibuja los recuadros verdes de detección sobre un lienzo */
+const VERDE_DET = '#22c55e';
+function dibujarCajas(c, reg, sx, sy, cw){
+  const fs = Math.max(12, Math.round(cw / 58)), lw = Math.max(2, Math.round(cw / 400));
+  c.font = `600 ${fs}px ui-monospace, Menlo, Consolas, monospace`;
+  c.textBaseline = 'top';
+  const puestas = [];
+  const etiqueta = (txt, x, y, fondo, colorTxt) => {
+    const tw = c.measureText(txt).width + 12, th = fs + 8;
+    let ty = y - th; if (ty < 0) ty = y;
+    let tx = Math.min(x, c.canvas.width - tw); if (tx < 0) tx = 0;
+    // evita que las etiquetas se encimen
+    for (let k = 0; k < 8 && puestas.some(e => tx < e.x + e.w && tx + tw > e.x && ty < e.y + e.h && ty + th > e.y); k++) ty += th + 2;
+    if (ty + th > c.canvas.height) ty = Math.max(0, c.canvas.height - th);
+    puestas.push({ x: tx, y: ty, w: tw, h: th });
+    c.fillStyle = fondo; c.fillRect(tx, ty, tw, th);
+    c.fillStyle = colorTxt; c.fillText(txt, tx + 6, ty + 4);
+  };
+  if (reg.hoja) {
+    const b = reg.hoja, x = b.x * sx, y = b.y * sy, W = b.w * sx, H = b.h * sy;
+    c.save(); c.setLineDash([lw * 5, lw * 4]); c.lineWidth = lw; c.strokeStyle = 'rgba(34,197,94,.9)'; c.strokeRect(x, y, W, H); c.restore();
+    etiqueta('HOJA', x, y, 'rgba(34,197,94,.9)', '#062b14');
+  }
+  reg.zonas.forEach(b => {
+    const x = b.x * sx, y = b.y * sy, W = Math.max(b.w * sx, 10), H = Math.max(b.h * sy, 10);
+    c.lineWidth = lw; c.strokeStyle = VERDE_DET; c.strokeRect(x, y, W, H);
+    const L = Math.min(W, H, fs * 1.4) * 0.45; c.lineWidth = lw * 2.2; c.beginPath();
+    c.moveTo(x, y + L); c.lineTo(x, y); c.lineTo(x + L, y);
+    c.moveTo(x + W - L, y); c.lineTo(x + W, y); c.lineTo(x + W, y + L);
+    c.moveTo(x, y + H - L); c.lineTo(x, y + H); c.lineTo(x + L, y + H);
+    c.moveTo(x + W - L, y + H); c.lineTo(x + W, y + H); c.lineTo(x + W, y + H - L); c.stroke();
+    etiqueta(ETIQ_ZONA[b.grupo], x, y, VERDE_DET, '#062b14');
+  });
+}
+
+/** Analiza una fotografía: mapa de síntomas + imagen con recuadros verdes */
+function analizarImagen(img){
+  const MAX = 360;
+  const W0 = img.naturalWidth || img.width, H0 = img.naturalHeight || img.height;
+  const k = Math.min(1, MAX / Math.max(W0, H0));
+  const w = Math.max(1, Math.round(W0 * k)), h = Math.max(1, Math.round(H0 * k));
+  const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+  const cx = cv.getContext('2d', { willReadFrequently: true });
+  cx.drawImage(img, 0, 0, w, h);
+  const r = nucleoVision(cx.getImageData(0, 0, w, h).data, w, h, true);
+  cx.putImageData(r.mapaDatos, 0, 0);
+  r.mapa = cv.toDataURL('image/jpeg', 0.88);
+  r.regiones = detectarRegiones(r.F, w, h);
+  const k2 = Math.min(1, 960 / Math.max(W0, H0));
+  const mc = document.createElement('canvas'); mc.width = Math.round(W0 * k2); mc.height = Math.round(H0 * k2);
+  const mx = mc.getContext('2d'); mx.drawImage(img, 0, 0, mc.width, mc.height);
+  dibujarCajas(mx, r.regiones, mc.width / w, mc.height / h, mc.width);
+  r.marcada = mc.toDataURL('image/jpeg', 0.88);
+  r.mapaDatos = null; r.F = null;
+  return r;
+}
+
+
+
+/* ---------- Aprendizaje automático: k vecinos más cercanos (k-NN) ----------
+   Cada diagnóstico que el técnico confirma se guarda como ejemplo etiquetado
+   (vector de rasgos de la imagen + síntomas marcados → plaga). En cada análisis
+   se buscan los k ejemplos más parecidos del mismo cultivo y su voto ponderado
+   ajusta la puntuación del sistema experto. */
+const APR = { clave:'horus_ejemplos', ejemplos:[], k:5, peso:4 };
+function cargarAprendizaje(){ APR.ejemplos = lsGet(APR.clave, []); if (!Array.isArray(APR.ejemplos)) APR.ejemplos = []; }
+function vectorDe(feats){
+  if (!feats || !feats.fr) return null;
+  const f = feats.fr, u = [.15, .10, .10, .06, .12, .05];
+  return [f.amarillo, f.cafe, f.negro, f.blanco, f.plateado, f.rojizo].map((x, i) => Math.min(1, (x || 0) / u[i])).concat([Math.min(1, (feats.puntos || 0) / 10)]);
+}
+function aprender(R){
+  if (!R || !R.plagaId || !R.ctx) return false;
+  APR.ejemplos.push({ c: R.ctx.cultivo, v: vectorDe(R.feats), s: R.ctx.sint.slice(), y: R.plagaId, t: Date.now() });
+  while (APR.ejemplos.length > 500) APR.ejemplos.shift();
+  lsSet(APR.clave, APR.ejemplos);
+  return true;
+}
+function votoKNN(cultivo, feats, sint){
+  const ej = APR.ejemplos.filter(e => e.c === cultivo && e.y);
+  if (!ej.length) return null;
+  const v = vectorDe(feats), A = new Set(sint);
+  const dist = ej.map(e => {
+    const B = new Set(e.s), uni = new Set([...A, ...B]).size, inter = [...A].filter(x => B.has(x)).length;
+    const ds = uni ? 1 - inter / uni : 0;
+    let d = ds;
+    if (v && e.v) { const dv = Math.sqrt(v.reduce((a, x, i) => a + (x - e.v[i]) ** 2, 0) / v.length); d = 0.5 * dv + 0.5 * ds; }
+    return { e, d };
+  }).sort((a, b) => a.d - b.d).slice(0, APR.k);
+  const votos = {}; let total = 0;
+  dist.forEach(({ e, d }) => { const w = 1 / (d + 0.05); votos[e.y] = (votos[e.y] || 0) + w; total += w; });
+  const mejor = Object.keys(votos).sort((a, b) => votos[b] - votos[a])[0];
+  return { votos, total, n: ej.length, vecinos: dist.length, mejor };
+}
+/** Suma el voto del k-NN a la puntuación del sistema experto y reordena */
+function aplicarKNN(ranking, cultivo, feats, sint){
+  const knn = votoKNN(cultivo, feats, sint);
+  if (!knn) return null;
+  ranking.forEach(x => { x.s += APR.peso * (knn.votos[x.p.id] || 0) / knn.total; });
+  ranking.sort((a, b) => b.s - a.s);
+  return knn;
+}
+
+function rasgo(feats, c){ return feats ? Math.min(1, (feats.fr[c] || 0) / UMBRAL[c]) : 0; }
+
+/** Puntúa cada plaga del cultivo con síntomas, color y clima */
+function puntuar(cultivo, sint, feats, clima){
+  return PLAGAS.filter(p => p.cultivos.includes(cultivo)).map(p => {
+    let s = 0; const coinc = [];
+    sint.forEach(k => { if (p.keys[k]) { s += p.keys[k]; coinc.push(k); } else s -= 0.6; });
+    if (feats) Object.keys(p.vis).forEach(c => { s += p.vis[c] * rasgo(feats, c); });
+    if (p.clima && clima !== 'normal') s *= (p.clima === clima ? 1.2 : 0.9);
+    return { p, s: Math.max(0, s), coinc };
+  }).sort((a, b) => b.s - a.s);
+}
+
+function calcularNivel(p, feats, extension, nCoinc){
+  let pts = 0;
+  if (feats) { if (feats.dano >= 30) pts += 2; else if (feats.dano >= 12) pts += 1; }
+  pts += ({ una:0, algunas:1, muchas:2 })[extension] || 0;
+  if (nCoinc >= 3) pts += 1;
+  pts += p.gravedad || 0;
+  return pts >= 4 ? 'grave' : pts >= 2 ? 'moderado' : 'leve';
+}
+
+const PLAZO = { leve:'durante esta semana (máximo 7 días)', moderado:'en las próximas 48 horas', grave:'en las próximas 24 horas' };
+const CLIMA_TXT = { humedo:'la alta humedad y las lluvias', seco:'el clima seco y caluroso', normal:'las condiciones actuales' };
+
+function resultadoDesdePlaga(p, ctx){
+  const nivel = calcularNivel(p, ctx.feats, ctx.extension, ctx.coinc.length);
+  const idx = { leve:0, moderado:1, grave:2 }[nivel];
+  const climaFavorece = p.clima && p.clima === ctx.clima;
+  const riesgo = (climaFavorece || nivel === 'grave') ? 'ALTO' : nivel === 'moderado' ? 'MEDIO' : 'BAJO a MEDIO';
+  const motivos = p.causas.slice();
+  if (climaFavorece) motivos.unshift('Condición actual favorable: ' + CLIMA_TXT[ctx.clima] + ' aceleran a esta plaga.');
+  const predictivo = `Si no se controla, en aproximadamente ${p.pred.dias[idx]} días ${p.pred.avance}. ${p.pred.perdida}. Riesgo ${riesgo}${climaFavorece ? ' por ' + CLIMA_TXT[ctx.clima] : ''}.`;
+  const plazo = p.reglamentada && p.gravedad ? PLAZO.grave + ' y avisar a la Junta Local de Sanidad Vegetal / SENASICA' : PLAZO[nivel];
+  const yaMencionaClima = /humedad|lluvia|seco|calur/.test(norm(p.causaCorta));
+  const respuesta = `Tu planta de ${ctx.cultivoNombre.toLowerCase()} tiene ${p.nombre} en etapa ${nivel}, causado por ${p.causaCorta}${climaFavorece && !yaMencionaClima ? ' y favorecido por ' + CLIMA_TXT[ctx.clima] : ''}. Se recomienda actuar ${plazo}.`;
+  const sintTxt = ctx.coinc.length ? ' Coincide con: ' + ctx.coinc.map(k => SINTOMAS[k].toLowerCase()).join('; ') + '.' : '';
+  const colTxt = ctx.feats ? ` La lectura de la imagen encontró ${ctx.feats.dano.toFixed(1)} % de tejido con síntomas${ctx.feats.puntos ? ' y ' + ctx.feats.puntos + ' puntos blancos sobre la hoja' : ''}.` : ' Diagnóstico sin fotografía, basado en los síntomas registrados.';
+  return {
+    plagaId: p.id, plaga: p.nombre, cientifico: p.cientifico, tipo: p.tipo,
+    nivel, riesgo, motivos, preventivo: p.preventivo, correctivo: p.correctivo, predictivo, respuesta,
+    aviso: p.reglamentada || '', avisoGrave: !!p.gravedad,
+    diagnostico: `${p.nombre} (${p.cientifico}) en ${ctx.cultivoNombre}.${sintTxt}${colTxt}`
+  };
+}
+
+function resultadoSano(ctx){
+  return {
+    plagaId: null, plaga: 'Sin plaga evidente', cientifico: '—', tipo: '—', nivel: 'sano', riesgo: 'BAJO',
+    motivos: ['No se registraron síntomas y la imagen muestra muy poco tejido dañado.'],
+    preventivo: ['Revisa el cultivo cada 15 días (envés de hojas, brotes, flores y frutos).','Poda de aireación y limpieza de ramas secas y frutos caídos.','Riego y fertilización equilibrados.','Trampas amarillas y de mosca de la fruta para monitoreo.','Conserva catarinas, crisopas y avispitas parasitoides.'],
+    correctivo: ['No se requiere tratamiento. Evita aplicar productos “por si acaso”: eliminan a los enemigos naturales.'],
+    predictivo: `Riesgo bajo por ahora. Con ${CLIMA_TXT[ctx.clima]}, vigila especialmente las plagas favorecidas por ese clima en los próximos 15 días.`,
+    respuesta: `Tu planta de ${ctx.cultivoNombre.toLowerCase()} se observa sana en esta revisión. Continúa con el monitoreo preventivo y repite el análisis si aparecen síntomas.`,
+    aviso: '', avisoGrave: false,
+    diagnostico: `No se encontraron síntomas claros de plagas o enfermedades en ${ctx.cultivoNombre}.` + (ctx.feats ? ` Tejido con síntomas en la imagen: ${ctx.feats.dano.toFixed(1)} %.` : '')
+  };
+}
+
+function confianza(top, second){
+  const rel = top / (top + Math.max(0, second) + 1);
+  const evid = Math.min(1, top / 10);
+  return Math.round(Math.min(95, Math.max(15, (0.5 * rel + 0.5 * evid) * 100)));
+}
+
+/** Botón Analizar */
+async function analizar(){
+  if (!ST.cultivo) { toast('Elige primero el cultivo (paso I).'); $('listaCultivos').scrollIntoView({behavior:'smooth', block:'center'}); return; }
+  const sint = sintomasMarcados();
+  if (!ST.img && !sint.length) { toast('Toma o sube una fotografía, o marca al menos un síntoma.'); return; }
+  cerrarCamara();
+  carga(true, 'Analizando la muestra');
+  await new Promise(r => setTimeout(r, 450));
+
+  const ctx = { cultivo: ST.cultivo, cultivoNombre: nombreCultivo(), sint, extension: $('selExtension').value, clima: $('selClima').value, feats: null, coinc: [] };
+  try { if (ST.img) ctx.feats = analizarImagen(ST.img); }
+  catch (e) { toast('No se pudo procesar la imagen; se analizará solo con los síntomas.'); }
+
+  const ranking = puntuar(ctx.cultivo, sint, ctx.feats, ctx.clima);
+  const knn = aplicarKNN(ranking, ctx.cultivo, ctx.feats, sint);
+  const top = ranking[0];
+  const sano = !sint.length && (!ctx.feats || (ctx.feats.dano < 6 && ctx.feats.puntos < 6));
+  let R;
+  if (sano || !top || top.s < 1.5) { R = resultadoSano(ctx); R.conf = sano ? 70 : 40; }
+  else { ctx.coinc = top.coinc; R = resultadoDesdePlaga(top.p, ctx); R.conf = confianza(top.s, ranking[1] ? ranking[1].s : 0); }
+  R.cultivo = ctx.cultivoNombre; R.cultivoFuente = 'Indicado en campo';
+  R.metodo = 'Análisis local';
+  R.feats = ctx.feats; R.ctx = ctx; R.fecha = new Date();
+  R.alternativas = ranking.filter(x => x.s > 0 && (!R.plagaId || x.p.id !== R.plagaId)).slice(0, 4).map(x => ({ id: x.p.id, conf: confianza(x.s, top ? top.s : 0) }));
+  R.avisos = [];
+  if (ctx.feats && ctx.feats.vegetacion < 0.15) R.avisos.push('Se ve poca planta en la foto. Acércate a la hoja o fruto dañado para una lectura más precisa.');
+  if (!ST.img) R.avisos.push('Diagnóstico sin fotografía: agrega una foto para aumentar la confianza.');
+  if (!sint.length && ST.img && !sano) R.avisos.push('Diagnóstico solo por imagen: marca los síntomas que observas para confirmar la plaga.');
+  R.knn = knn;
+  if (knn && plagaPorId(knn.mejor)) R.avisos.push(`Aprendizaje automático (k-NN): ${knn.n} diagnóstico(s) confirmado(s) de este cultivo; los ${knn.vecinos} casos más parecidos apuntan a ${plagaPorId(knn.mejor).nombre}.`);
+
+  const cfg = getCfg();
+  if (cfg.useAI && cfg.apiKey && navigator.onLine) {
+    carga(true, 'Consultando IA en la nube');
+    try { R = await analizarConIA(R, ctx); }
+    catch (e) { R.avisos.push('La IA en la nube no respondió (' + (e.message || 'error') + '). Se muestra el análisis local.'); }
+  }
+  carga(false);
+  ST.resultado = R;
+  mostrarResultado(R);
+}
+
+function usarAlternativa(id){
+  const p = plagaPorId(id); const R0 = ST.resultado;
+  if (!p || !R0) return;
+  const ctx = Object.assign({}, R0.ctx); ctx.coinc = ctx.sint.filter(k => p.keys[k]);
+  const R = resultadoDesdePlaga(p, ctx);
+  Object.assign(R, { cultivo: R0.cultivo, cultivoFuente: R0.cultivoFuente, metodo: 'Selección del técnico', feats: R0.feats, ctx: R0.ctx, conf: null, avisos: [], fecha: new Date() });
+  const prev = R0.plagaId ? [{ id: R0.plagaId, conf: R0.conf }] : [];
+  R.alternativas = prev.concat(R0.alternativas.filter(a => a.id !== id));
+  ST.resultado = R; mostrarResultado(R);
+}
+
+/* ======================== 6. IA EN LA NUBE (OPCIONAL) ======================== */
+function imagenBase64(img, max){
+  let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+  const k = Math.min(1, max / Math.max(w, h)); w = Math.round(w * k); h = Math.round(h * k);
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  c.getContext('2d').drawImage(img, 0, 0, w, h);
+  return c.toDataURL('image/jpeg', 0.85).split(',')[1];
+}
+async function llamarClaude(content, maxTokens){
+  const cfg = getCfg();
+  const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 60000);
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST', signal: ctrl.signal,
+      headers: { 'content-type': 'application/json', 'x-api-key': cfg.apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({ model: cfg.model || 'claude-sonnet-5-5', max_tokens: maxTokens, messages: [{ role: 'user', content }] })
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error((data.error && data.error.message) || ('HTTP ' + res.status));
+    return (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('');
+  } catch (e) {
+    if (e.name === 'AbortError') throw new Error('tiempo de espera agotado');
+    throw e;
+  } finally { clearTimeout(t); }
+}
+async function analizarConIA(local, ctx){
+  const listaDB = PLAGAS.map(p => `${p.id}: ${p.nombre} (${p.cientifico})`).join('\n');
+  const colores = ctx.feats ? Object.keys(UMBRAL).filter(c => c !== 'puntos').map(c => `${NOMBRE_CLASE[c]} ${(ctx.feats.fr[c]*100).toFixed(1)}%`).join(', ') + `, puntos blancos sobre la hoja: ${ctx.feats.puntos}` : 'sin foto';
+  const prompt =
+`Eres un agrónomo experto en plagas y enfermedades tropicales de San Juan Bautista Tuxtepec, Oaxaca, México.
+Analiza la foto (si existe) y los datos. Cultivo indicado por el usuario: ${ctx.cultivoNombre}.
+Síntomas marcados: ${ctx.sint.map(k => SINTOMAS[k]).join('; ') || 'ninguno'}.
+Extensión: ${ctx.extension}. Clima reciente: ${CLIMA_TXT[ctx.clima]}.
+Lectura local de color: ${colores}. Diagnóstico local preliminar: ${local.plaga}.
+Base de datos interna (usa el id si coincide; si no coincide usa null):
+${listaDB}
+
+Responde SOLO con un objeto JSON válido, sin texto adicional, con esta forma exacta:
+{"cultivo":"cultivo que ves en la foto","plaga_id":"id o null","plaga":"nombre común","cientifico":"nombre científico","tipo":"Insecto|Ácaro|Hongo|Bacteria|Oomiceto|Virus|Deficiencia|Ninguna","nivel":"leve|moderado|grave|sano","confianza":0,"diagnostico":"diagnóstico completo en 2-4 frases","motivos":["..."],"preventivo":["..."],"correctivo":["..."],"predictivo":"qué pasa si no se controla y en cuántos días","respuesta":"Tu planta de ... tiene ... en etapa ..., causado por .... Se recomienda actuar ..."}
+Reglas: español sencillo para agricultores; en correctivo incluye opciones biológicas y químicas con dosis de referencia y recuerda respetar la etiqueta registrada; trata solo los focos; si es plaga reglamentada (HLB, mosca del Mediterráneo, escoba de bruja) indica avisar a SENASICA; si la planta se ve sana usa nivel "sano" y plaga "Sin plaga evidente"; si la foto no es una planta dilo en el diagnóstico.`;
+  const content = [];
+  if (ST.img) content.push({ type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: imagenBase64(ST.img, 1024) } });
+  content.push({ type: 'text', text: prompt });
+
+  const txt = await llamarClaude(content, 2500);
+  const m = txt.match(/\{[\s\S]*\}/);
+  if (!m) throw new Error('respuesta sin formato JSON');
+  const j = JSON.parse(m[0]);
+  const p = plagaPorId(j.plaga_id);
+  const arr = (a, def) => Array.isArray(a) && a.length ? a.map(String) : (def || []);
+  const nivel = ['leve','moderado','grave','sano'].includes(j.nivel) ? j.nivel : local.nivel;
+  return Object.assign({}, local, {
+    plagaId: p ? p.id : null,
+    plaga: j.plaga || (p ? p.nombre : local.plaga),
+    cientifico: j.cientifico || (p ? p.cientifico : '—'),
+    tipo: j.tipo || (p ? p.tipo : '—'),
+    nivel,
+    conf: Math.max(0, Math.min(100, Number(j.confianza) || local.conf)),
+    cultivo: j.cultivo || local.cultivo,
+    cultivoFuente: j.cultivo ? 'Identificado por IA' : local.cultivoFuente,
+    diagnostico: j.diagnostico || local.diagnostico,
+    motivos: arr(j.motivos, p ? p.causas : local.motivos),
+    preventivo: arr(j.preventivo, p ? p.preventivo : local.preventivo),
+    correctivo: arr(j.correctivo, p ? p.correctivo : local.correctivo),
+    predictivo: j.predictivo || local.predictivo,
+    respuesta: j.respuesta || local.respuesta,
+    aviso: p ? p.reglamentada : '', avisoGrave: p ? !!p.gravedad : false,
+    metodo: 'IA en la nube + base de datos',
+    alternativas: local.plagaId && (!p || local.plagaId !== p.id)
+      ? [{ id: local.plagaId, conf: local.conf }].concat(local.alternativas.filter(a => !p || a.id !== p.id))
+      : local.alternativas.filter(a => !p || a.id !== p.id)
+  });
+}
+
+/* ======================== 7. INFORME Y TABLA OBLIGATORIA ======================== */
+const ESCALA = [
+  ['sano','Sano','tejido verde'], ['leve','Leve','clorosis'], ['moderado','Moderado','daño en avance'], ['grave','Grave','necrosis']
+];
+function mostrarResultado(R){
+  $('resultado').style.display = 'block';
+  $('btnVerTabla').disabled = false;
+  const f = R.fecha || new Date();
+  const folio = `HRS-${f.getFullYear()}${dos(f.getMonth()+1)}${dos(f.getDate())}-${dos(f.getHours())}${dos(f.getMinutes())}${dos(f.getSeconds())}`;
+  $('resMeta').innerHTML = `Folio <b>${folio}</b><br>${fechaLarga(f)} · ${dos(f.getHours())}:${dos(f.getMinutes())} h<br>${esc(R.metodo)}`;
+  $('resTitulo').textContent = R.nivel === 'sano' ? 'Planta sin plaga evidente' : R.plaga;
+
+  $('resDatos').innerHTML = `
+    <div class="dato"><span class="etq">Cultivo</span><div class="val">${esc(R.cultivo)}</div><div class="sub">${esc(R.cultivoFuente)}</div></div>
+    <div class="dato ancho"><span class="etq">Plaga o enfermedad</span><div class="val">${esc(R.plaga)}</div><div class="cient">${esc(R.cientifico)}</div><div class="sub">Organismo: ${esc(R.tipo)}</div></div>
+    <div class="dato"><span class="etq">Confianza</span><div class="val">${R.conf == null ? 'Manual' : R.conf + ' %'}</div>
+      ${R.conf == null ? '<div class="sub">Elegido por el técnico</div>' : `<div class="conf-barra"><div style="width:${R.conf}%"></div></div>`}</div>`;
+  $('resEscala').innerHTML = ESCALA.map(([k, t, s]) => `<div class="esc ${k}${k === R.nivel ? ' actual' : ''}"><b>${t}</b><span>${s}</span></div>`).join('');
+  $('resRiesgo').textContent = 'Riesgo ' + (R.riesgo || '—');
+
+  let av = '';
+  if (R.aviso) av += `<div class="aviso ${R.avisoGrave ? 'oficial' : 'info'}">${ico(R.avisoGrave ? 'i-alerta' : 'i-info')}<div>${esc(R.aviso)}</div></div>`;
+  (R.avisos || []).forEach(a => av += `<div class="aviso nota-a">${ico('i-info')}<div>${esc(a)}</div></div>`);
+  $('resAvisos').innerHTML = av;
+  $('resDiagnostico').innerHTML = '<span class="etq">Diagnóstico</span>' + esc(R.diagnostico);
+
+  if (R.feats) {
+    $('cardColor').style.display = 'block';
+    verImagenInforme(R.feats.marcada ? 'det' : 'mapa');
+    $('resColores').innerHTML =
+      `<div class="dano-total"><b>${R.feats.dano.toFixed(1)} %</b><span>del tejido muestra síntomas${R.feats.puntos ? ` · ${R.feats.puntos} puntos blancos sobre la hoja` : ''}</span></div>` +
+      ['verde','amarillo','cafe','negro','blanco','plateado','rojizo'].map(c => {
+        const pc = R.feats.fr[c] * 100, col = 'rgb(' + MAPA[c].join(',') + ')';
+        return `<div class="color-row"><i style="background:${col}"></i><span>${NOMBRE_CLASE[c]}</span><div class="b"><div style="width:${Math.min(100, pc).toFixed(1)}%;background:${col}"></div></div><b>${pc.toFixed(1)}%</b></div>`;
+      }).join('') +
+      `<p class="nota">Porcentajes sobre la planta detectada. El fondo, las sombras o un fruto maduro pueden alterar la lectura: enfoca la zona dañada.</p>`;
+  } else { $('cardColor').style.display = 'none'; }
+
+  const nivelTxt = R.nivel === 'sano' ? 'Sano' : R.nivel;
+  $('resTabla').innerHTML = `<tr>
+    <td data-label="Plaga Identificada"><div class="nom">${esc(R.plaga)}</div><div class="cient">${esc(R.cientifico)}</div><span class="nivel ${esc(R.nivel)}">${esc(nivelTxt)}</span></td>
+    <td data-label="Cultivo Afectado"><div class="cul">${esc(R.cultivo)}</div></td>
+    <td data-label="Motivos / Por qué se dio la plaga">${lista(R.motivos)}</td>
+    <td data-label="Cómo combatirla">
+      <div class="bloque a"><div class="bloque-cab"><span class="letra">A</span><b>Preventivo</b><small>para que no vuelva</small></div>${lista(R.preventivo)}</div>
+      <div class="bloque b"><div class="bloque-cab"><span class="letra">B</span><b>Correctivo</b><small>qué hacer ya</small></div>${lista(R.correctivo)}</div>
+      <div class="bloque c"><div class="bloque-cab"><span class="letra">C</span><b>Predictivo</b><small>si no se controla</small></div><p>${esc(R.predictivo)}</p></div>
+      <div class="bloque d"><div class="bloque-cab"><span class="letra">D</span><b>Respuesta de análisis</b><small>conclusión</small></div><p>${esc(R.respuesta)}</p></div>
+    </td></tr>`;
+
+  const alts = (R.alternativas || []).map(a => ({ a, p: plagaPorId(a.id) })).filter(x => x.p);
+  $('cardAlt').style.display = alts.length ? 'block' : 'none';
+  $('resAlternativas').innerHTML = alts.map(({ a, p }) => `
+    <div class="alt"><div><b>${esc(p.nombre)}</b><small>${esc(p.cientifico)}</small>${a.conf != null ? `<span class="pct">Afinidad ${a.conf} %</span>` : ''}</div>
+      <button data-ficha="${p.id}">Ficha</button><button data-usar="${p.id}">Usar</button></div>`).join('');
+  $('resAlternativas').querySelectorAll('[data-ficha]').forEach(b => b.addEventListener('click', () => abrirFicha(b.dataset.ficha)));
+  $('resAlternativas').querySelectorAll('[data-usar]').forEach(b => b.addEventListener('click', () => usarAlternativa(b.dataset.usar)));
+  $('btnFichaRes').style.display = R.plagaId ? '' : 'none';
+  $('btnConfirmar').style.display = R.plagaId ? '' : 'none';
+  $('btnConfirmar').disabled = false;
+
+  $('resultado').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function verImagenInforme(modo){
+  const f = ST.resultado && ST.resultado.feats; if (!f) return;
+  const det = modo === 'det' && f.marcada;
+  $('resMapa').src = det ? f.marcada : f.mapa;
+  $('btnVerDet').classList.toggle('sel', !!det); $('btnVerMapa').classList.toggle('sel', !det);
+  const nz = f.regiones ? f.regiones.zonas.length : 0;
+  $('mapaPie').textContent = det ? `Recuadros verdes · ${nz} zona(s) con síntomas${f.regiones && f.regiones.hoja ? ' · línea punteada: hoja detectada' : ''}`
+                                 : 'Mapa de síntomas · verde oscuro: hoja sana · gris claro: fondo descartado';
+}
+function verTabla(){
+  if (!ST.resultado) { toast('Primero realiza un análisis.'); return; }
+  irTab('diag');
+  const t = $('cardTabla');
+  setTimeout(() => { t.scrollIntoView({ behavior: 'smooth', block: 'start' }); t.classList.remove('resaltar'); void t.offsetWidth; t.classList.add('resaltar'); }, 60);
+}
+function nuevoAnalisis(){
+  quitarFoto(); ST.resultado = null;
+  document.querySelectorAll('#listaSintomas input').forEach(i => { i.checked = false; i.parentElement.classList.remove('on'); });
+  $('resultado').style.display = 'none'; $('btnVerTabla').disabled = true;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ======================== 8. BUSCAR PLAGA ======================== */
+function renderChips(){
+  const op = [['todos', 'Todos']].concat(Object.keys(CULTIVOS).map(k => [k, CULTIVOS[k].nombre]));
+  $('chipsCultivo').innerHTML = op.map(([k, t]) =>
+    `<button class="chip${k === ST.filtroCultivo ? ' sel' : ''}" data-f="${k}">${esc(t)}</button>`).join('');
+  $('chipsCultivo').querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => { ST.filtroCultivo = b.dataset.f; renderChips(); buscar(); }));
+}
+function buscar(){
+  const q = norm($('txtBuscar').value.trim());
+  const tipo = $('selTipo').value;
+  const res = PLAGAS.filter(p => {
+    if (ST.filtroCultivo !== 'todos' && !p.cultivos.includes(ST.filtroCultivo)) return false;
+    if (tipo && p.tipo !== tipo) return false;
+    if (!q) return true;
+    const texto = norm([p.nombre, p.alias, p.cientifico, p.tipo, p.sintomas.join(' '), p.cultivos.map(c => CULTIVOS[c].nombre).join(' ')].join(' '));
+    return q.split(/\s+/).every(w => texto.includes(w));
+  });
+  $('contBusqueda').textContent = res.length + ' de ' + PLAGAS.length + ' fichas';
+  $('listaFichas').innerHTML = res.length ? res.map(p => `
+    <button class="ficha" data-id="${p.id}"><div>
+      <span class="num">${numFicha(p.id)} · ${esc(p.tipo)}</span>
+      <h3>${esc(p.nombre)}</h3><i>${esc(p.cientifico)}</i>
+      <div class="tags">${p.reglamentada && p.gravedad ? '<span class="tag regl">Reglamentada</span>' : ''}${p.cultivos.map(c => `<span class="tag">${esc(CULTIVOS[c].nombre)}</span>`).join('')}</div></div></button>`).join('')
+    : '<div class="vacio">No hay fichas con esos criterios. Prueba con otro nombre o síntoma.</div>';
+  $('listaFichas').querySelectorAll('.ficha').forEach(b => b.addEventListener('click', () => abrirFicha(b.dataset.id)));
+}
+
+function abrirModal(titulo, html){
+  $('modalTitulo').textContent = titulo; $('modalCuerpo').innerHTML = html;
+  $('modal').classList.add('abierto'); document.body.style.overflow = 'hidden';
+  $('modal').querySelector('.modal-caja').scrollTop = 0;
+}
+function cerrarModal(){ $('modal').classList.remove('abierto'); document.body.style.overflow = ''; }
+
+function abrirFicha(id){
+  const p = plagaPorId(id); if (!p) return;
+  const q = encodeURIComponent(p.inat);
+  abrirModal('Ficha técnica ' + numFicha(p.id), `
+    <div class="lamina" data-ficha="${p.id}">
+      <div class="lam-foto"><div class="lam-img" id="fotoFicha"><div class="sin-foto">${esc(p.inat)}<small>Cargando fotografía de campo</small></div></div>
+        <div class="lam-pie" id="fotoCred">Fotografía de campo: iNaturalist México.</div></div>
+      <div>
+        <span class="etq">${esc(p.tipo)}</span>
+        <h2 class="lam-nom">${esc(p.nombre)}</h2>
+        <div class="lam-cient">${esc(p.cientifico)}</div>
+        <dl class="dl">
+          <dt>Nombre común</dt><dd>${esc(p.nombre)}</dd>
+          <dt>Científico</dt><dd><i>${esc(p.cientifico)}</i></dd>
+          <dt>Cultivos</dt><dd>${p.cultivos.map(c => esc(CULTIVOS[c].nombre)).join(', ')}</dd>
+          <dt>Favorece</dt><dd>${p.clima ? esc(CLIMA_TXT[p.clima]) : 'Cualquier época del año'}</dd>
+          <dt>Avance</dt><dd>Empeora en ${p.pred.dias[2]}–${p.pred.dias[0]} días si no se controla</dd>
+        </dl>
+      </div>
+    </div>
+    ${p.reglamentada ? `<div class="aviso ${p.gravedad ? 'oficial' : 'info'}">${ico(p.gravedad ? 'i-alerta' : 'i-info')}<div>${esc(p.reglamentada)}</div></div>` : ''}
+    <div class="lam-dos">
+      <div class="lam-sec"><h3>Síntomas</h3>${lista(p.sintomas)}</div>
+      <div class="lam-sec"><h3>Causas</h3>${lista(p.causas)}</div>
+    </div>
+    <div class="lam-sec"><h3>Control</h3>
+      <div class="bloque a"><div class="bloque-cab"><span class="letra">A</span><b>Preventivo</b><small>para que no vuelva</small></div>${lista(p.preventivo)}</div>
+      <div class="bloque b"><div class="bloque-cab"><span class="letra">B</span><b>Correctivo</b><small>qué hacer ya</small></div>${lista(p.correctivo)}</div>
+      <div class="bloque c"><div class="bloque-cab"><span class="letra">C</span><b>Predictivo</b><small>si no se controla</small></div><p>${esc(p.pred.avance.charAt(0).toUpperCase() + p.pred.avance.slice(1))}. ${esc(p.pred.perdida)}.</p></div>
+    </div>
+    <div class="lam-sec"><h3>Más fotografías y fichas</h3>
+      <div class="enlaces">
+        <a href="https://mexico.inaturalist.org/taxa/search?q=${q}" target="_blank" rel="noopener">iNaturalist México ${ico('i-externo','sm')}</a>
+        <a href="https://www.insectimages.org/search/action.cfm?q=${q}" target="_blank" rel="noopener">Bugwood ${ico('i-externo','sm')}</a>
+        <a href="https://plantwiseplusknowledgebank.org/action/doSearch?AllField=${q}" target="_blank" rel="noopener">PlantwisePlus · CABI ${ico('i-externo','sm')}</a>
+        <a href="https://www.gob.mx/senasica" target="_blank" rel="noopener">SENASICA ${ico('i-externo','sm')}</a>
+        <a href="https://www.croplifela.org/es/plagas/listado-de-plagas" target="_blank" rel="noopener">CropLife LA ${ico('i-externo','sm')}</a>
+      </div>
+    </div>`);
+  cargarFotoReal(p);
+}
+/** Foto real desde iNaturalist con caché local; sin conexión queda la lámina ilustrada */
+async function cargarFotoReal(p){
+  const key = 'horus_foto_' + p.id;
+  let foto = lsGet(key, null), fallo = false;
+  if (!foto && navigator.onLine) {
+    try {
+      const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 8000);
+      const r = await fetch('https://api.inaturalist.org/v1/taxa?per_page=1&q=' + encodeURIComponent(p.inat), { signal: ctrl.signal });
+      clearTimeout(t);
+      const d = await r.json();
+      const tx = d.results && d.results[0];
+      if (tx && tx.default_photo && tx.default_photo.medium_url) {
+        foto = { url: tx.default_photo.medium_url, cred: tx.default_photo.attribution || 'iNaturalist', taxon: tx.name };
+        lsSet(key, foto);
+      }
+    } catch (e) { fallo = true; /* sin conexión: se conserva la lámina */ }
+  }
+  const caja = $('fotoFicha'), abierta = document.querySelector('.lamina[data-ficha="' + p.id + '"]');
+  if (!caja || !abierta || !$('modal').classList.contains('abierto')) return;
+  if (foto) {
+    const img = new Image(); img.alt = p.nombre;
+    img.onload = () => { caja.innerHTML = ''; caja.appendChild(img); $('fotoCred').textContent = 'Fotografía: ' + foto.cred + ' · ' + foto.taxon + ' · iNaturalist'; };
+    img.onerror = () => { caja.innerHTML = '<div class="sin-foto">' + esc(p.inat) + '<small>No se pudo descargar la fotografía</small></div>'; };
+    img.src = foto.url;
+  } else {
+    const msg = !navigator.onLine ? 'Sin conexión: la fotografía se muestra al conectarse a internet' : fallo ? 'No se pudo conectar con iNaturalist' : 'iNaturalist no tiene fotografía de este taxón';
+    caja.innerHTML = '<div class="sin-foto">' + esc(p.inat) + '<small>' + msg + '</small></div>';
+    $('fotoCred').textContent = 'Consulta más fotografías en los enlaces de esta ficha.';
+  }
+}
+
+/* ---------- Asistente: Pregunta a Horus ----------
+   1) Recupera las fichas más relacionadas con la pregunta (búsqueda por palabras clave).
+   2) Con IA en la nube activa: Claude responde usando esas fichas como contexto.
+   3) Sin conexión o sin clave: responde la base de datos local con la ficha más relacionada. */
+const VACIAS = new Set('como para que con sin los las del una uno unos unas por mis hay tiene tengo cual cuales esta este esto son ser mas muy porque donde cuando debo puedo hacer hago sobre entre tambien mejor plaga plagas planta plantas cultivo cultivos hoja hojas'.split(' '));
+function recuperarFichas(q, n){
+  const toks = norm(q).split(/[^a-z0-9ñ]+/).filter(t => t.length > 2 && !VACIAS.has(t));
+  if (!toks.length) return [];
+  return PLAGAS.map(p => {
+    const fuerte = norm([p.nombre, p.alias, p.cientifico].join(' '));
+    const cult = norm(p.cultivos.map(c => CULTIVOS[c].nombre).join(' '));
+    const debil = norm([p.sintomas.join(' '), p.causas.join(' '), p.tipo].join(' '));
+    let sc = 0;
+    toks.forEach(t => { const r = t.slice(0, Math.max(4, t.length - 2)); if (fuerte.includes(r)) sc += 3; if (cult.includes(r)) sc += 2; if (debil.includes(r)) sc += 1; });
+    return { p, sc };
+  }).filter(x => x.sc > 0).sort((a, b) => b.sc - a.sc).slice(0, n).map(x => x.p);
+}
+function modoIA(){
+  const c = getCfg(), nube = c.useAI && c.apiKey;
+  $('iaModo').textContent = nube ? (navigator.onLine ? 'Modo: IA en la nube (Claude) + base de datos de Horus' : 'Modo: base de datos local (sin internet)')
+                                 : 'Modo: base de datos local · activa la IA en la nube en Configuración';
+}
+function textoAHtml(t){
+  const lineas = esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').split(/\n+/);
+  let html = '', enLista = false;
+  lineas.forEach(l => {
+    const m = l.match(/^\s*(?:[-•*]|\d+[.)])\s+(.*)/);
+    if (m) { if (!enLista) { html += '<ul>'; enLista = true; } html += '<li>' + m[1] + '</li>'; }
+    else { if (enLista) { html += '</ul>'; enLista = false; } if (l.trim()) html += '<p>' + l.replace(/^#+\s*/, '') + '</p>'; }
+  });
+  return html + (enLista ? '</ul>' : '');
+}
+function fuentesHtml(fichas){
+  if (!fichas.length) return '';
+  return '<div class="ia-fuentes"><span class="etq" style="align-self:center">Fichas consultadas:</span>' +
+    fichas.map(p => `<button data-ficha="${p.id}">${numFicha(p.id)} · ${esc(p.nombre)}</button>`).join('') + '</div>';
+}
+function respuestaLocal(q, fichas){
+  if (!fichas.length) return '<p>No encontré fichas relacionadas con la pregunta. Prueba con el nombre de la plaga, el cultivo o un síntoma (por ejemplo: <i>roya café</i>, <i>manchas negras mango</i>).</p>';
+  const p = fichas[0], nq = norm(q);
+  const quiereControl = /control|combat|elimin|cur|trat|matar|aplic|producto|dosis|quitar|evitar|prevenir/.test(nq);
+  const quiereSint = /sintom|como se ve|identific|reconoc|senal|danos?/.test(nq);
+  const quiereCausa = /causa|por que|porque|origen|aparece|sale/.test(nq);
+  const todo = !quiereControl && !quiereSint && !quiereCausa;
+  let h = `<h4>${esc(p.nombre)}</h4><p><i>${esc(p.cientifico)}</i> · ${esc(p.tipo)} · ${p.cultivos.map(c => esc(CULTIVOS[c].nombre)).join(', ')}</p>`;
+  if (p.reglamentada) h += `<p><b>${esc(p.reglamentada)}</b></p>`;
+  if (quiereSint || todo) h += '<h5>Síntomas</h5>' + lista(p.sintomas);
+  if (quiereCausa || todo) h += '<h5>Causas</h5>' + lista(p.causas);
+  if (quiereControl || todo) h += '<h5>Preventivo</h5>' + lista(p.preventivo) + '<h5>Correctivo</h5>' + lista(p.correctivo);
+  if (todo) h += `<h5>Si no se controla</h5><p>${esc(p.pred.avance.charAt(0).toUpperCase() + p.pred.avance.slice(1))}. ${esc(p.pred.perdida)}.</p>`;
+  return h;
+}
+async function preguntar(){
+  const q = $('txtPregunta').value.trim();
+  if (q.length < 3) { toast('Escribe una pregunta.'); return; }
+  const fichas = recuperarFichas(q, 4);
+  const c = getCfg();
+  const caja = $('iaResp');
+  if (c.useAI && c.apiKey && navigator.onLine) {
+    caja.innerHTML = '<p class="mono">Consultando a la IA…</p>';
+    const contexto = (fichas.length ? fichas : PLAGAS.slice(0, 0)).map(p => ({
+      ficha: numFicha(p.id), nombre: p.nombre, cientifico: p.cientifico, tipo: p.tipo, cultivos: p.cultivos.map(x => CULTIVOS[x].nombre),
+      reglamentada: p.reglamentada, sintomas: p.sintomas, causas: p.causas, preventivo: p.preventivo, correctivo: p.correctivo,
+      riesgo: p.pred.avance + '. ' + p.pred.perdida
+    }));
+    const prompt =
+`Eres Horus, asistente fitosanitario para productores de San Juan Bautista Tuxtepec, Oaxaca (limón, naranja, guanábana, mango, cacao y café).
+Responde en español sencillo, en máximo 180 palabras, con viñetas cuando ayuden.
+Básate primero en estas fichas de la base de datos de Horus y cita la ficha así: (Ficha N.º XX). Si la pregunta no está cubierta por las fichas, dilo y da solo orientación general prudente.
+Para productos químicos recuerda usar solo productos con registro vigente y respetar la etiqueta. Para plagas reglamentadas indica avisar a SENASICA o a la Junta Local de Sanidad Vegetal.
+Fichas: ${JSON.stringify(contexto)}
+Lista de todas las fichas disponibles: ${PLAGAS.map(p => numFicha(p.id) + ' ' + p.nombre).join('; ')}
+Pregunta: ${q}`;
+    try {
+      const txt = await llamarClaude([{ type: 'text', text: prompt }], 900);
+      caja.innerHTML = '<h5>Respuesta de la IA (Claude) basada en la base de datos de Horus</h5>' + textoAHtml(txt) + fuentesHtml(fichas);
+    } catch (e) {
+      caja.innerHTML = `<h5>La IA no respondió (${esc(e.message)}). Respuesta de la base de datos local</h5>` + respuestaLocal(q, fichas) + fuentesHtml(fichas);
+    }
+  } else {
+    caja.innerHTML = '<h5>Respuesta de la base de datos local</h5>' + respuestaLocal(q, fichas) + fuentesHtml(fichas.slice(0, 4));
+  }
+  caja.querySelectorAll('[data-ficha]').forEach(b => b.addEventListener('click', () => abrirFicha(b.dataset.ficha)));
+  modoIA();
+}
+
+/* ======================== 9. CONFIGURACIÓN ======================== */
+function getCfg(){ return Object.assign({ useAI: false, apiKey: '', model: 'claude-sonnet-5-5' }, lsGet('horus_cfg', {})); }
+function abrirAjustes(){
+  const c = getCfg();
+  abrirModal('Configuración', `
+    <h2 class="lam-nom" style="font-size:26px">IA en la nube</h2>
+    <p style="color:var(--tinta-2)">El análisis local funciona siempre, sin conexión. Si quieres que la IA revise la fotografía directamente e identifique cultivo y plaga, activa esta opción con tu clave de API de Anthropic (console.anthropic.com). La clave se guarda solo en este dispositivo.</p>
+    <label class="switch"><input type="checkbox" id="cfgUse"${c.useAI ? ' checked' : ''}> Usar IA en la nube cuando haya conexión</label>
+    <label class="lbl" for="cfgKey">Clave de API</label>
+    <input type="password" id="cfgKey" value="${esc(c.apiKey)}" placeholder="sk-ant-…" autocomplete="off">
+    <label class="lbl" for="cfgModel">Modelo</label>
+    <input type="text" id="cfgModel" value="${esc(c.model)}">
+    <div class="fila-btn" style="margin-top:18px">
+      <button class="btn btn-sec" id="cfgProbar">${ico('i-analizar')}Probar conexión</button>
+      <button class="btn btn-pri" id="cfgGuardar">${ico('i-check')}Guardar</button>
+    </div>
+    <p class="nota mono" id="cfgEstado"></p>
+    <h2 class="lam-nom" style="font-size:26px;margin-top:26px">Aprendizaje automático</h2>
+    <p style="color:var(--tinta-2)">Cada vez que confirmas un diagnóstico, Horus lo guarda como ejemplo y lo usa para reconocer casos parecidos (k vecinos más cercanos). Ejemplos guardados en este dispositivo: <b id="cfgEjemplos">${APR.ejemplos.length}</b>.</p>
+    <div class="fila-btn">
+      <button class="btn btn-sec" id="cfgExportar">${ico('i-subir')}Exportar ejemplos</button>
+      <button class="btn btn-alerta" id="cfgOlvidar">${ico('i-cerrar')}Borrar aprendizaje</button>
+    </div>
+    <button class="btn btn-alerta" id="cfgBorrar" style="width:100%;margin-top:10px">${ico('i-cerrar')}Borrar clave, fotografías y aprendizaje</button>`);
+  $('cfgExportar').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(APR.ejemplos, null, 1)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'horus-ejemplos.json';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  });
+  $('cfgOlvidar').addEventListener('click', () => { APR.ejemplos = []; lsSet(APR.clave, []); $('cfgEjemplos').textContent = '0'; toast('Aprendizaje borrado.'); });
+  $('cfgGuardar').addEventListener('click', () => { guardarCfg(); cerrarModal(); modoIA(); toast('Configuración guardada.'); });
+  $('cfgProbar').addEventListener('click', async () => {
+    guardarCfg();
+    const est = $('cfgEstado');
+    if (!getCfg().apiKey) { est.textContent = 'Escribe primero tu clave de API.'; return; }
+    if (!navigator.onLine) { est.textContent = 'Sin conexión a internet.'; return; }
+    est.textContent = 'Probando conexión…';
+    try { await llamarClaude([{ type: 'text', text: 'Responde solo: OK' }], 10); est.textContent = 'Conexión correcta con la IA.'; }
+    catch (e) { est.textContent = 'Error: ' + e.message; }
+  });
+  $('cfgBorrar').addEventListener('click', () => {
+    try { Object.keys(localStorage).filter(k => k.indexOf('horus_') === 0).forEach(k => localStorage.removeItem(k)); } catch (e) {}
+    APR.ejemplos = [];
+    cerrarModal(); modoIA(); toast('Datos eliminados de este dispositivo.');
+  });
+}
+function guardarCfg(){ lsSet('horus_cfg', { useAI: $('cfgUse').checked, apiKey: $('cfgKey').value.trim(), model: $('cfgModel').value.trim() || 'claude-sonnet-5-5' }); }
+
+/* ======================== 10. INICIO ======================== */
+function estadoRed(){
+  const on = navigator.onLine;
+  $('estadoRed').classList.toggle('on', on);
+  $('estadoRed').querySelector('span').textContent = on ? 'En línea' : 'Sin conexión';
+}
+function initManifest(){
+  // Publicado en un servidor (https o localhost): app instalable con funcionamiento sin conexión.
+  if (/^https?:$/.test(location.protocol)) {
+    const l = document.createElement('link'); l.rel = 'manifest'; l.href = 'manifest.webmanifest';
+    document.head.appendChild(l);
+    const a = document.createElement('link'); a.rel = 'apple-touch-icon'; a.href = 'iconos/icono-180.png';
+    document.head.appendChild(a);
+    if ('serviceWorker' in navigator && window.isSecureContext) navigator.serviceWorker.register('sw.js').catch(() => {});
+    return;
+  }
+  // Abierto como archivo (doble clic): manifiesto mínimo incrustado.
+  try {
+    const icon = document.querySelector('link[rel=icon]').href;
+    const m = { name:'Horus · Vigilancia fitosanitaria', short_name:'Horus', start_url:'.', display:'standalone', background_color:'#f3eee2', theme_color:'#1d1b16', icons:[{ src: icon, sizes:'any', type:'image/svg+xml' }] };
+    const l = document.createElement('link'); l.rel = 'manifest';
+    l.href = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(m));
+    document.head.appendChild(l);
+  } catch (e) { /* opcional */ }
+}
+/** La cámara en vivo exige contexto seguro: https://, http://localhost o archivo local en computadora */
+function camaraEnVivoDisponible(){ return !!(window.isSecureContext && navigator.mediaDevices && navigator.mediaDevices.getUserMedia); }
+function avisoContextoSeguro(){
+  const es = $('estadoSeguro');
+  if (es) es.textContent = camaraEnVivoDisponible() ? 'dirección segura, cámara en vivo disponible.' : 'dirección NO segura, abre el enlace https para la cámara en vivo.';
+  if (camaraEnVivoDisponible()) return;
+  $('visorVacio').innerHTML = '<p>Aún no hay fotografía de la muestra.</p><p class="nota" style="margin-top:8px">Esta dirección no es segura (no es https), por eso el navegador bloquea la cámara en vivo. Abre Horus desde su enlace <b>https://</b> para usar la detección en vivo. Mientras tanto, el botón Cámara abre la cámara del dispositivo para tomar la foto.</p>';
+}
+function init(){
+  cargarAprendizaje(); renderPortada(); initTabs(); modoIA(); renderCultivos(); renderChips(); buscar(); estadoRed(); initManifest(); estadoVisor('vacio'); avisoContextoSeguro();
+  const hoy = new Date(); $('fechaHoy').innerHTML = fechaLarga(hoy) + '<br>San Juan Bautista Tuxtepec, Oax.';
+  window.addEventListener('online', () => { estadoRed(); modoIA(); }); window.addEventListener('offline', () => { estadoRed(); modoIA(); });
+
+  $('btnIngresar').addEventListener('click', () => ingresar('diag'));
+  $('btnIrBuscar').addEventListener('click', () => ingresar('buscar'));
+  $('btnPortada').addEventListener('click', verPortada);
+
+  $('btnCamara').addEventListener('click', abrirCamara);
+  $('btnSubir').addEventListener('click', () => { cerrarCamara(); $('inputArchivo').click(); });
+  $('btnCamSistema').addEventListener('click', () => $('inputCaptura').click());
+  $('inputArchivo').addEventListener('change', e => { leerArchivo(e.target.files[0]); e.target.value = ''; });
+  $('inputCaptura').addEventListener('change', e => { leerArchivo(e.target.files[0]); e.target.value = ''; });
+  $('btnCapturar').addEventListener('click', capturarFoto);
+  $('btnGirar').addEventListener('click', girarCamara);
+  $('btnCerrarCam').addEventListener('click', cerrarCamara);
+  $('btnQuitarFoto').addEventListener('click', quitarFoto);
+
+  $('btnAnalizar').addEventListener('click', analizar);
+  $('btnVerTabla').addEventListener('click', verTabla);
+  $('btnNuevo').addEventListener('click', nuevoAnalisis);
+  $('btnImprimir').addEventListener('click', () => window.print());
+  $('btnVerDet').addEventListener('click', () => verImagenInforme('det'));
+  $('btnConfirmar').addEventListener('click', () => {
+    if (aprender(ST.resultado)) { $('btnConfirmar').disabled = true; toast(`Diagnóstico confirmado. Horus aprendió de este caso (${APR.ejemplos.length} ejemplos guardados).`); }
+  });
+  $('btnPreguntar').addEventListener('click', preguntar);
+  $('txtPregunta').addEventListener('keydown', e => { if (e.key === 'Enter') preguntar(); });
+  $('btnVerMapa').addEventListener('click', () => verImagenInforme('mapa'));
+  $('btnFichaRes').addEventListener('click', () => { if (ST.resultado && ST.resultado.plagaId) abrirFicha(ST.resultado.plagaId); });
+
+  $('txtBuscar').addEventListener('input', buscar);
+  $('txtBuscar').addEventListener('keydown', e => { if (e.key === 'Enter') buscar(); });
+  $('btnBuscar').addEventListener('click', () => { buscar(); $('contBusqueda').scrollIntoView({ behavior:'smooth', block:'start' }); });
+  $('selTipo').addEventListener('change', buscar);
+
+  $('btnAjustes').addEventListener('click', abrirAjustes);
+  $('btnCerrarModal').addEventListener('click', cerrarModal);
+  $('modal').addEventListener('click', e => { if (e.target === $('modal')) cerrarModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarModal(); });
+  window.addEventListener('pagehide', detenerStream);
+}
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
